@@ -1,0 +1,63 @@
+[
+  {
+    "store": "khaadi.com",
+    "name": "Khaadi",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8"},
+      {"area": "Islamabad", "label": "F-7 Markaz"},
+      {"area": "Rawalpindi", "label": "Saddar"},
+      {"area": "Rawalpindi", "label": "Bahria Town Phase 7"}
+    ]
+  },
+  {
+    "store": "sanasafinaz.com",
+    "name": "Sana Safinaz",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8"},
+      {"area": "Islamabad", "label": "Blue Area"},
+      {"area": "Rawalpindi", "label": "Gulrez Housing Scheme"}
+    ]
+  },
+  {
+    "store": "gulahmed.com",
+    "name": "Gul Ahmed",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "G-9 Markaz"},
+      {"area": "Islamabad", "label": "F-10 Markaz"},
+      {"area": "Rawalpindi", "label": "Chandni Chowk"},
+      {"area": "Rawalpindi", "label": "Raja Bazaar"}
+    ]
+  },
+  {
+    "store": "jdotpk.com",
+    "name": "J. (Junaid Jamshed)",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall"},
+      {"area": "Islamabad", "label": "Giga Mall, DHA Phase 2"},
+      {"area": "Rawalpindi", "label": "Saddar"}
+    ]
+  },
+  {
+    "store": "zara-pk.online",
+    "name": "Zara Pakistan",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Online Only (Delivers Twin Cities)"}
+    ]
+  },
+  {
+    "store": "bonanzasatrangi.com",
+    "name": "Bonanza Satrangi",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "F-6 Supermarket"},
+      {"area": "Islamabad", "label": "Jinnah Super, F-7"},
+      {"area": "Rawalpindi", "label": "Bahria Town Phase 4"},
+      {"area": "Rawalpindi", "label": "Peshawar Road"}
+    ]
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "silhouette": {
+    "a-line|fit-and-flare": 0.7,
+    "a-line|shift": 0.5,
+    "a-line|empire": 0.6,
+    "straight|shift": 0.7,
+    "straight|bodycon": 0.4,
+    "bodycon|fit-and-flare": 0.4,
+    "ballgown|fit-and-flare": 0.6,
+    "wrap|a-line": 0.4,
+    "empire|a-line": 0.6,
+    "shift|straight": 0.7
+  },
+  "neckline": {
+    "v-neck|sweetheart": 0.5,
+    "round|boat": 0.6,
+    "square|sweetheart": 0.6,
+    "halter|high-neck": 0.5,
+    "off-shoulder|boat": 0.5,
+    "v-neck|round": 0.4,
+    "high-neck|round": 0.4,
+    "sweetheart|off-shoulder": 0.5
+  },
+  "sleeve": {
+    "full|three-quarter": 0.7,
+    "three-quarter|short": 0.6,
+    "short|cap": 0.7,
+    "bell|full": 0.6,
+    "puff|short": 0.5,
+    "sleeveless|cap": 0.5,
+    "cap|short": 0.7,
+    "three-quarter|cap": 0.5
+  },
+  "length": {
+    "maxi|midi": 0.7,
+    "midi|knee": 0.7,
+    "knee|mini": 0.6
+  },
+  "occasion": {
+    "formal|wedding": 0.7,
+    "formal|party": 0.6,
+    "casual|office": 0.5,
+    "party|wedding": 0.5
+  },
+  "_conflicts": {
+    "sleeve": ["full|sleeveless"],
+    "length": ["maxi|mini"]
+  }
+}
