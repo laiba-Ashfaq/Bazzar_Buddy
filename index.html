@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VYZOR STYLER — Autonomous Fashion Search Engine</title>
+  <title>BazzarBuddy — Autonomous Fashion Search Engine</title>
   
-  <!-- Google Fonts: Syne & Plus Jakarta Sans for futuristic luxury editorial typography -->
+  <!-- Google Fonts: Syne, Plus Jakarta Sans & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -23,7 +23,7 @@
         extend: {
           colors: {
             brand: {
-              lime: '#D4FF00',      /* Vyzor Electric Lime */
+              lime: '#D4FF00',      /* BazzarBuddy Electric Lime */
               sky: '#00E5FF',       /* High-tech Sky Cyan */
               dark: '#0A0B0E',      /* Obsidian Background */
               darker: '#060709',
@@ -47,17 +47,17 @@
 
   <style>
     :root {
-      --bg: #0A0B0E;
-      --bg-card: #12141A;
-      --bg-card-subtle: rgba(18, 20, 26, 0.7);
-      --border: #1F2430;
-      --text: #F1F5F9;
-      --text-muted: #94A3B8;
-      --accent-lime: #D4FF00;
-      --accent-sky: #00E5FF;
-      --glow-lime: rgba(212, 255, 0, 0.15);
-      --glow-sky: rgba(0, 229, 255, 0.15);
-      --watermark: rgba(255, 255, 255, 0.03);
+      --bg: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #FFFFFF;
+      --border: #E2E8F0;
+      --text: #0F172A;
+      --text-muted: #64748B;
+      --accent-lime: #2563EB;
+      --accent-sky: #0F766E;
+      --glow-lime: rgba(37, 99, 235, 0.12);
+      --glow-sky: rgba(15, 118, 110, 0.12);
+      --watermark: transparent;
     }
 
     [data-theme="light"] {
@@ -67,11 +67,25 @@
       --border: #E2E8F0;
       --text: #0F172A;
       --text-muted: #64748B;
-      --accent-lime: #A3E600;
+      --accent-lime: #84CC16;
       --accent-sky: #0284C7;
-      --glow-lime: rgba(163, 230, 0, 0.2);
+      --glow-lime: rgba(132, 204, 22, 0.2);
       --glow-sky: rgba(2, 132, 199, 0.15);
       --watermark: rgba(0, 0, 0, 0.03);
+    }
+
+    [data-theme="dark"] {
+      --bg: #080A0F;
+      --bg-card: #11151D;
+      --bg-card-subtle: #161B24;
+      --border: #273142;
+      --text: #F8FAFC;
+      --text-muted: #94A3B8;
+      --accent-lime: #A3E635;
+      --accent-sky: #22D3EE;
+      --glow-lime: rgba(163, 230, 53, 0.18);
+      --glow-sky: rgba(34, 211, 238, 0.18);
+      --watermark: transparent;
     }
 
     body {
@@ -82,78 +96,74 @@
       overflow-x: hidden;
     }
 
-    /* Architectural background watermark text inspired by Vyzor */
     .bg-watermark {
-      position: absolute;
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: clamp(6rem, 16vw, 18rem);
-      line-height: 0.85;
-      letter-spacing: -0.05em;
-      color: var(--watermark);
-      user-select: none;
-      pointer-events: none;
-      z-index: 0;
-      text-transform: uppercase;
-      white-space: nowrap;
+      display: none;
     }
 
     .glass-panel {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
     }
 
     .glass-input {
-      background: rgba(0, 0, 0, 0.15);
+      background: #F1F5F9;
       border: 1px solid var(--border);
       color: var(--text);
     }
-    [data-theme="light"] .glass-input {
-      background: #F1F5F9;
+    [data-theme="dark"] .glass-input {
+      background: #0D1118;
+      color: var(--text);
     }
 
-    /* Vyzor aesthetic accent buttons */
     .btn-lime {
       background: var(--accent-lime);
-      color: #0A0B0E;
+      color: #FFFFFF;
       font-weight: 600;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-lime:hover {
-      box-shadow: 0 0 25px var(--glow-lime);
+      box-shadow: 0 4px 12px var(--glow-lime);
       transform: translateY(-1px);
     }
 
     .btn-sky {
       background: var(--accent-sky);
-      color: #0A0B0E;
+      color: #FFFFFF;
       font-weight: 600;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .btn-sky:hover {
-      box-shadow: 0 0 25px var(--glow-sky);
+      box-shadow: 0 4px 12px var(--glow-sky);
       transform: translateY(-1px);
     }
 
     .badge-lime {
       background: rgba(212, 255, 0, 0.12);
       color: var(--accent-lime);
-      border: 1px solid rgba(212, 255, 0, 0.25);
+      border: 1px solid rgba(212, 255, 0, 0.3);
     }
     [data-theme="light"] .badge-lime {
-      background: rgba(163, 230, 0, 0.15);
+      background: rgba(132, 204, 22, 0.15);
       color: #3F6212;
-      border-color: rgba(163, 230, 0, 0.35);
+      border-color: rgba(132, 204, 22, 0.35);
     }
 
     .badge-sky {
       background: rgba(0, 229, 255, 0.1);
       color: var(--accent-sky);
-      border: 1px solid rgba(0, 229, 255, 0.25);
+      border: 1px solid rgba(0, 229, 255, 0.3);
     }
 
-    /* Scanning beam animation for uploaded sketches */
+    [data-theme="dark"] .badge-lime {
+      background: rgba(163, 230, 53, 0.12);
+      border-color: rgba(163, 230, 53, 0.35);
+    }
+
+    [data-theme="dark"] .badge-sky {
+      background: rgba(34, 211, 238, 0.12);
+      border-color: rgba(34, 211, 238, 0.35);
+    }
+
     @keyframes scanBeam {
       0% { top: 0%; opacity: 0; }
       15% { opacity: 1; }
@@ -172,29 +182,90 @@
       z-index: 20;
     }
 
-    /* Custom range slider */
     input[type=range] {
       accent-color: var(--accent-lime);
     }
 
-    /* Subtle grid line overlay */
     .bg-grid-subtle {
-      background-size: 40px 40px;
-      background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-image: none;
     }
-    [data-theme="light"] .bg-grid-subtle {
-      background-image: 
-        linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+
+    .graph-node {
+      cursor: pointer;
+      outline: none;
+    }
+
+    .graph-node:hover circle,
+    .graph-node.selected circle {
+      stroke: var(--text);
+      stroke-width: 3;
+      filter: drop-shadow(0 0 7px var(--glow-sky));
+    }
+
+    .graph-shell {
+      background: #0B0B16;
+      box-shadow: 0 16px 50px rgba(8, 8, 20, 0.25);
+    }
+
+    .graph-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 235px;
+    }
+
+    .graph-communities {
+      overflow-y: auto;
+      max-height: 560px;
+      padding: 18px 14px;
+      background: #151526;
+      color: #A7A9C0;
+      font: 10px 'JetBrains Mono', monospace;
+    }
+
+    .graph-check {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 6px 0;
+      cursor: pointer;
+    }
+
+    .graph-check input {
+      accent-color: #22D3EE;
+    }
+
+    .graph-community-label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin: 6px 0;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .graph-community-dot {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 500px) {
+      .graph-workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .graph-communities {
+        max-height: 220px;
+      }
     }
   </style>
 </head>
 
 <body class="bg-grid-subtle min-h-screen relative flex flex-col justify-between selection:bg-[#D4FF00] selection:text-black">
 
-  <!-- TOP WATERMARK TYPOGRAPHY (VYZOR STYLE) -->
+  <!-- TOP WATERMARK TYPOGRAPHY (BAZZARBUDDY STYLE) -->
   <div class="bg-watermark top-10 left-1/2 -translate-x-1/2">
     SMART VISION
   </div>
@@ -206,20 +277,20 @@
       <!-- Logo -->
       <a href="#" class="flex items-center gap-3 group">
         <div class="w-8 h-8 rounded bg-gradient-to-tr from-[#00E5FF] to-[#D4FF00] flex items-center justify-center font-mono font-bold text-black text-xs tracking-tighter">
-          VZ
+          BB
         </div>
         <div>
-          <span class="font-display tracking-tight text-xl font-extrabold text-[var(--text)]">VYZOR</span>
-          <span class="text-xs font-mono uppercase tracking-widest text-[#00E5FF] ml-1">STYLER</span>
+          <span class="font-display tracking-tight text-xl font-extrabold text-[var(--text)]">BazzarBuddy</span>
         </div>
       </a>
 
       <!-- Navigation Links -->
-      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-wider font-medium text-[var(--text-muted)]">
-        <a href="#engine" class="hover:text-[var(--text)] transition-colors">Engine</a>
-        <a href="#catalog" class="hover:text-[var(--text)] transition-colors">Catalog</a>
-        <a href="#stores" class="hover:text-[var(--text)] transition-colors">Twin Cities Stores</a>
-        <a href="#api" class="hover:text-[var(--text)] transition-colors">API Specs</a>
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-wider font-mono font-medium text-[var(--text-muted)]">
+        <a href="#engine" class="hover:text-[var(--text)] transition-colors">Vision Engine</a>
+        <a href="#live-search-section" class="hover:text-[#00E5FF] transition-colors text-[#00E5FF]">Live Online Search</a>
+        <a href="#catalog" class="hover:text-[var(--text)] transition-colors">Catalog (38 Items)</a>
+        <a href="#graph" class="hover:text-[var(--text)] transition-colors">Graphify</a>
+        <a href="#stores" class="hover:text-[var(--text)] transition-colors">12 Twin Cities Stores</a>
       </nav>
 
       <!-- Right Actions: Status & Dark/Light Toggle -->
@@ -243,12 +314,12 @@
   </header>
 
   <!-- ── MAIN CONTENT ────────────────────────────────────────────────────────── -->
-  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 flex-grow">
+  <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 flex-grow space-y-12">
 
     <!-- HERO SECTION (EDITORIAL MINIMALIST) -->
-    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4 pb-14 border-b border-[var(--border)]">
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2 pb-10 border-b border-[var(--border)]">
       
-      <div class="lg:col-span-7 space-y-6">
+      <div class="lg:col-span-7 space-y-5">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded text-xs font-mono tracking-widest uppercase badge-sky">
           <span class="w-1.5 h-1.5 rounded-full bg-[#00E5FF]"></span>
           SKETCH-TO-SHOP VISION SYSTEM · MODEL S-01
@@ -262,56 +333,56 @@
         </h1>
 
         <p class="text-base sm:text-lg text-[var(--text-muted)] max-w-xl font-normal leading-relaxed">
-          Upload any dress sketch or photo. Computer vision extracts structural silhouette, cut, and attributes — instantly matched against live inventory from Islamabad & Rawalpindi apparel stores.
+          Upload any dress sketch or photo. Computer vision extracts structural silhouette, cut, and color attributes — instantly searching across all 12 major apparel stores in Islamabad & Rawalpindi online.
         </p>
 
         <!-- Quick Spec Numbers -->
         <div class="grid grid-cols-3 gap-4 pt-2 max-w-md font-mono border-t border-[var(--border)]">
           <div>
             <div class="text-xs text-[var(--text-muted)] uppercase">Index Catalog</div>
-            <div class="text-xl font-bold text-[var(--accent-lime)] mt-1">300+ Items</div>
+            <div class="text-xl font-bold text-[var(--accent-lime)] mt-1">38+ Items</div>
           </div>
           <div>
-            <div class="text-xs text-[var(--text-muted)] uppercase">Stores</div>
-            <div class="text-xl font-bold text-[var(--accent-sky)] mt-1">6 Brands</div>
+            <div class="text-xs text-[var(--text-muted)] uppercase">Online Brands</div>
+            <div class="text-xl font-bold text-[var(--accent-sky)] mt-1">12 Stores</div>
           </div>
           <div>
-            <div class="text-xs text-[var(--text-muted)] uppercase">Match Time</div>
-            <div class="text-xl font-bold text-[var(--text)] mt-1">&lt; 1.2s</div>
+            <div class="text-xs text-[var(--text-muted)] uppercase">Match Accuracy</div>
+            <div class="text-xl font-bold text-[var(--text)] mt-1">Strict Rank</div>
           </div>
         </div>
       </div>
 
-      <!-- Quick Specs Card (Vyzor aesthetic) -->
+      <!-- Quick Specs Card (BazzarBuddy aesthetic) -->
       <div class="lg:col-span-5">
         <div class="glass-panel p-6 rounded-xl border border-[var(--border)] space-y-4">
           <div class="flex items-center justify-between text-xs font-mono text-[var(--text-muted)] pb-3 border-b border-[var(--border)]">
-            <span>CORE SPECIFICATION</span>
-            <span class="text-[#00E5FF]">ACTIVE PIPELINE</span>
+            <span>REGIONAL DISCOVERY SCOPE</span>
+            <span class="text-[#00E5FF]">LIVE INTERNET</span>
           </div>
           
           <ul class="space-y-3 text-xs font-mono">
             <li class="flex items-center justify-between">
-              <span class="text-[var(--text-muted)]">Visual Inference:</span>
-              <span class="font-medium text-[var(--text)]">Gemini 1.5 Flash / Gemma 3</span>
+              <span class="text-[var(--text-muted)]">Verified Stockists:</span>
+              <span class="font-medium text-[var(--text)]">Sapphire, Khaadi, Limelight + 9 more</span>
             </li>
             <li class="flex items-center justify-between">
-              <span class="text-[var(--text-muted)]">Attribute Graph:</span>
-              <span class="font-medium text-[var(--text)]">Near-Miss Weighted Matrix</span>
+              <span class="text-[var(--text-muted)]">Color Prioritization:</span>
+              <span class="font-medium text-[#D4FF00]">High-Precision Strict Match</span>
             </li>
             <li class="flex items-center justify-between">
-              <span class="text-[var(--text-muted)]">Region Coverage:</span>
-              <span class="font-medium text-[#D4FF00]">Islamabad & Rawalpindi</span>
+              <span class="text-[var(--text-muted)]">Twin Cities Branches:</span>
+              <span class="font-medium text-[var(--text)]">Centaurus, F-7, Giga Mall, Saddar</span>
             </li>
             <li class="flex items-center justify-between">
-              <span class="text-[var(--text-muted)]">Pricing Currency:</span>
-              <span class="font-medium text-[var(--text)]">Pakistani Rupee (PKR)</span>
+              <span class="text-[var(--text-muted)]">Live Query Launcher:</span>
+              <span class="font-medium text-[#00E5FF]">Direct Online Search Engine</span>
             </li>
           </ul>
 
           <div class="pt-3">
-            <a href="#engine" class="w-full block text-center btn-sky py-2.5 rounded font-mono text-xs uppercase tracking-wider font-semibold">
-              Begin Visual Search
+            <a href="#live-search-section" class="w-full block text-center btn-sky py-2.5 rounded font-mono text-xs uppercase tracking-wider font-semibold">
+              Search All Stores Online
             </a>
           </div>
         </div>
@@ -319,15 +390,15 @@
     </section>
 
     <!-- ── CORE MVP WORKFLOW INTERFACE ────────────────────────────────────────── -->
-    <section id="engine" class="py-14 space-y-10">
+    <section id="engine" class="space-y-8">
       
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-[#00E5FF]">Interactive Module</span>
+          <span class="font-mono text-xs uppercase tracking-widest text-[#00E5FF]">Interactive Vision Module</span>
           <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-[var(--text)] mt-1">Upload & Attribute Analysis</h2>
         </div>
         <p class="text-xs font-mono text-[var(--text-muted)] max-w-sm">
-          Select or drop a sketch. Modify extracted attributes below to instantly refresh ranked store inventory.
+          Drop a sketch or choose a preset. Edit extracted attributes to immediately re-calculate nearest store findings.
         </p>
       </div>
 
@@ -384,15 +455,15 @@
               <div class="grid grid-cols-3 gap-2">
                 <button type="button" class="sample-btn px-2 py-2 rounded text-[11px] font-mono border border-[var(--border)] hover:border-[#00E5FF] text-left transition-all bg-[var(--bg)]" data-sample="emerald">
                   <span class="block font-semibold text-[var(--text)] truncate">Emerald Maxi</span>
-                  <span class="block text-[9px] text-[var(--text-muted)] truncate">A-Line · Formal</span>
+                  <span class="block text-[9px] text-[var(--text-muted)] truncate">Green · A-Line</span>
                 </button>
-                <button type="button" class="sample-btn px-2 py-2 rounded text-[11px] font-mono border border-[var(--border)] hover:border-[#00E5FF] text-left transition-all bg-[var(--bg)]" data-sample="ivory">
-                  <span class="block font-semibold text-[var(--text)] truncate">Ivory Fit&Flare</span>
-                  <span class="block text-[9px] text-[var(--text-muted)] truncate">Sweetheart · Lace</span>
+                <button type="button" class="sample-btn px-2 py-2 rounded text-[11px] font-mono border border-[var(--border)] hover:border-[#00E5FF] text-left transition-all bg-[var(--bg)]" data-sample="cobalt">
+                  <span class="block font-semibold text-[var(--text)] truncate">Cobalt Kurti</span>
+                  <span class="block text-[9px] text-[var(--text-muted)] truncate">Blue · Straight</span>
                 </button>
-                <button type="button" class="sample-btn px-2 py-2 rounded text-[11px] font-mono border border-[var(--border)] hover:border-[#00E5FF] text-left transition-all bg-[var(--bg)]" data-sample="velvet">
-                  <span class="block font-semibold text-[var(--text)] truncate">Black Velvet</span>
-                  <span class="block text-[9px] text-[var(--text-muted)] truncate">Bodycon · Halter</span>
+                <button type="button" class="sample-btn px-2 py-2 rounded text-[11px] font-mono border border-[var(--border)] hover:border-[#00E5FF] text-left transition-all bg-[var(--bg)]" data-sample="ruby">
+                  <span class="block font-semibold text-[var(--text)] truncate">Ruby Festive</span>
+                  <span class="block text-[9px] text-[var(--text-muted)] truncate">Red · Wedding</span>
                 </button>
               </div>
             </div>
@@ -415,11 +486,33 @@
             <!-- 6 Controlled Attribute Selectors (Live dropdowns) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="attributeChipsGrid">
               
-              <!-- 1. Silhouette -->
+              <!-- 1. Primary Color (Priority #1) -->
               <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
                 <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>SILHOUETTE</span>
-                  <span class="text-[#D4FF00] font-semibold" id="conf-silhouette">85%</span>
+                  <span>BASE COLOR (30%)</span>
+                  <span class="text-[#D4FF00] font-semibold" id="conf-color">95%</span>
+                </div>
+                <select id="attr-color" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#D4FF00]">
+                  <option value="green" selected>Emerald / Green</option>
+                  <option value="blue">Blue / Cobalt</option>
+                  <option value="red">Red / Ruby / Maroon</option>
+                  <option value="pink">Pink / Blush / Rose</option>
+                  <option value="black">Black / Noir</option>
+                  <option value="white">White / Ivory</option>
+                  <option value="yellow">Yellow / Mustard</option>
+                  <option value="purple">Purple / Lavender</option>
+                  <option value="orange">Orange / Rust</option>
+                  <option value="beige">Beige / Nude</option>
+                  <option value="multi">Multi / Printed</option>
+                  <option value="unknown">All Colors</option>
+                </select>
+              </div>
+
+              <!-- 2. Silhouette (Priority #2) -->
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
+                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
+                  <span>SILHOUETTE (25%)</span>
+                  <span class="text-[#00E5FF] font-semibold" id="conf-silhouette">88%</span>
                 </div>
                 <select id="attr-silhouette" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
                   <option value="a-line" selected>A-Line</option>
@@ -430,15 +523,48 @@
                   <option value="wrap">Wrap</option>
                   <option value="ballgown">Ballgown / Peshwas</option>
                   <option value="empire">Empire</option>
-                  <option value="unknown">Unknown</option>
+                  <option value="unknown">Any Silhouette</option>
                 </select>
               </div>
 
-              <!-- 2. Neckline -->
+              <!-- 3. Length -->
               <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
                 <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>NECKLINE</span>
-                  <span class="text-[#00E5FF] font-semibold" id="conf-neckline">80%</span>
+                  <span>LENGTH (18%)</span>
+                  <span class="text-[#D4FF00] font-semibold" id="conf-length">82%</span>
+                </div>
+                <select id="attr-length" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
+                  <option value="maxi" selected>Maxi / Floor Length</option>
+                  <option value="midi">Midi / Calf</option>
+                  <option value="knee">Knee Length</option>
+                  <option value="mini">Mini</option>
+                  <option value="unknown">Any Length</option>
+                </select>
+              </div>
+
+              <!-- 4. Sleeve Cut -->
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
+                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
+                  <span>SLEEVE CUT (10%)</span>
+                  <span class="text-[#00E5FF] font-semibold" id="conf-sleeve">90%</span>
+                </div>
+                <select id="attr-sleeve" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
+                  <option value="full" selected>Full Sleeve</option>
+                  <option value="three-quarter">3/4 Sleeve</option>
+                  <option value="short">Short Sleeve</option>
+                  <option value="sleeveless">Sleeveless</option>
+                  <option value="cap">Cap Sleeve</option>
+                  <option value="bell">Bell Sleeve</option>
+                  <option value="puff">Puff Sleeve</option>
+                  <option value="unknown">Any Sleeve</option>
+                </select>
+              </div>
+
+              <!-- 5. Neckline -->
+              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
+                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
+                  <span>NECKLINE (12%)</span>
+                  <span class="text-[#D4FF00] font-semibold" id="conf-neckline">80%</span>
                 </div>
                 <select id="attr-neckline" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
                   <option value="v-neck" selected>V-Neck</option>
@@ -449,70 +575,15 @@
                   <option value="off-shoulder">Off-Shoulder</option>
                   <option value="high-neck">High-Neck / Mandarin</option>
                   <option value="sweetheart">Sweetheart</option>
-                  <option value="unknown">Unknown</option>
-                </select>
-              </div>
-
-              <!-- 3. Sleeve -->
-              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
-                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>SLEEVE CUT</span>
-                  <span class="text-[#D4FF00] font-semibold" id="conf-sleeve">90%</span>
-                </div>
-                <select id="attr-sleeve" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
-                  <option value="full" selected>Full Sleeve</option>
-                  <option value="three-quarter">3/4 Length</option>
-                  <option value="short">Short</option>
-                  <option value="sleeveless">Sleeveless</option>
-                  <option value="cap">Cap Sleeve</option>
-                  <option value="bell">Bell Sleeve</option>
-                  <option value="puff">Puff Sleeve</option>
-                  <option value="unknown">Unknown</option>
-                </select>
-              </div>
-
-              <!-- 4. Length -->
-              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
-                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>LENGTH</span>
-                  <span class="text-[#00E5FF] font-semibold" id="conf-length">75%</span>
-                </div>
-                <select id="attr-length" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
-                  <option value="maxi" selected>Maxi / Floor</option>
-                  <option value="midi">Midi / Calf</option>
-                  <option value="knee">Knee Length</option>
-                  <option value="mini">Mini</option>
-                  <option value="unknown">Unknown</option>
-                </select>
-              </div>
-
-              <!-- 5. Primary Color -->
-              <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
-                <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>BASE COLOR</span>
-                  <span class="text-[#D4FF00] font-semibold" id="conf-color">92%</span>
-                </div>
-                <select id="attr-color" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
-                  <option value="green" selected>Emerald / Green</option>
-                  <option value="blue">Blue / Navy</option>
-                  <option value="red">Red / Maroon</option>
-                  <option value="black">Black</option>
-                  <option value="white">White / Ivory</option>
-                  <option value="pink">Pink / Blush</option>
-                  <option value="yellow">Yellow / Mustard</option>
-                  <option value="beige">Beige / Nude</option>
-                  <option value="purple">Purple / Lilac</option>
-                  <option value="orange">Orange / Rust</option>
-                  <option value="multi">Multi / Printed</option>
-                  <option value="unknown">Unknown</option>
+                  <option value="unknown">Any Neckline</option>
                 </select>
               </div>
 
               <!-- 6. Occasion -->
               <div class="p-3 rounded-lg border border-[var(--border)] bg-[rgba(0,0,0,0.15)] space-y-1.5">
                 <div class="flex items-center justify-between text-[11px] font-mono text-[var(--text-muted)]">
-                  <span>OCCASION</span>
-                  <span class="text-[#00E5FF] font-semibold" id="conf-occasion">70%</span>
+                  <span>OCCASION (5%)</span>
+                  <span class="text-[#00E5FF] font-semibold" id="conf-occasion">75%</span>
                 </div>
                 <select id="attr-occasion" class="w-full glass-input text-xs font-mono rounded px-2 py-1.5 outline-none focus:border-[#00E5FF]">
                   <option value="formal" selected>Formal</option>
@@ -520,23 +591,23 @@
                   <option value="wedding">Wedding / Festive</option>
                   <option value="party">Party / Evening</option>
                   <option value="office">Office / Minimal</option>
-                  <option value="unknown">Unknown</option>
+                  <option value="unknown">Any Occasion</option>
                 </select>
               </div>
 
             </div>
 
-            <!-- Graph Reasoning & Conflict Explainer Box -->
+            <!-- Dynamic Search Query Status -->
             <div class="p-4 rounded-lg border border-[var(--border)] bg-[var(--bg)] font-mono text-xs space-y-2">
               <div class="flex items-center justify-between text-[var(--text-muted)] text-[11px]">
                 <span class="flex items-center gap-1.5 text-[#00E5FF]">
-                  <i class="fa-solid fa-circle-nodes"></i>
-                  STYLE GRAPH INFERENCE MATRIX
+                  <i class="fa-solid fa-crosshairs"></i>
+                  ACTIVE SEARCH QUERY LOCK
                 </span>
-                <span id="matchesCountDisplay">Evaluating 60 catalog items</span>
+                <span id="matchesCountDisplay" class="text-[#D4FF00] font-semibold">Strict Color Accuracy Active</span>
               </div>
               <p id="graphExplanationText" class="text-[var(--text)] leading-relaxed">
-                Query attributes established. Matching products with exact silhouette (<span class="text-[#D4FF00]">a-line</span>) and color (<span class="text-[#D4FF00]">green</span>). Near-miss weights enabled for sleeve and length permutations.
+                Searching for <span class="text-[#D4FF00] font-bold" id="querySummaryText">Green A-Line Maxi Dress</span> across regional online catalogs.
               </p>
             </div>
 
@@ -547,56 +618,269 @@
 
     </section>
 
+    <!-- ── LIVE REGIONAL ONLINE MULTI-STORE SEARCH DISPATCHER (NEW KILLER FEATURE) ── -->
+    <section id="live-search-section" class="glass-panel p-6 sm:p-8 rounded-2xl border border-[var(--border)] space-y-6 bg-gradient-to-b from-[rgba(0,229,255,0.03)] to-transparent">
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-[var(--border)]">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded text-[11px] font-mono uppercase badge-lime mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#D4FF00]"></span>
+            LIVE REGIONAL MULTI-STORE DISPATCHER
+          </div>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-[var(--text)]">Search All 12 Twin Cities Stores Online</h2>
+          <p class="text-xs font-mono text-[var(--text-muted)] mt-1">
+            Instantly query live web stores in Islamabad & Rawalpindi with your exact detected attributes.
+          </p>
+        </div>
+
+        <!-- Master Search All Button -->
+        <button id="openAllStoresBtn" class="btn-lime px-6 py-3 rounded-lg font-mono text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 shadow-lg">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Search Top Stores in Parallel</span>
+        </button>
+      </div>
+
+      <!-- Live Search Query Bar -->
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <div class="relative w-full">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-[var(--text-muted)]"></i>
+          <input type="text" id="liveSearchQueryInput" value="emerald a-line maxi dress" class="w-full glass-input text-xs font-mono rounded-lg pl-9 pr-4 py-3 outline-none focus:border-[#00E5FF]" placeholder="Enter query or use auto-generated attributes..." />
+        </div>
+        <button id="refreshLiveQueryBtn" class="w-full sm:w-auto btn-sky px-5 py-3 rounded-lg font-mono text-xs uppercase tracking-wider font-semibold whitespace-nowrap">
+          Sync with Attributes
+        </button>
+      </div>
+
+      <!-- 12 Regional Stores Quick-Launch Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 pt-2">
+        
+        <!-- 1. Sapphire -->
+        <a id="link-sapphire" href="https://pk.sapphireonline.pk/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Sapphire</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, Giga Mall</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 2. Limelight -->
+        <a id="link-limelight" href="https://www.limelight.pk/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Limelight</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, F-10, RWP</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 3. Khaadi -->
+        <a id="link-khaadi" href="https://khaadi.com/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Khaadi</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, F-7, Saddar</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 4. Sana Safinaz -->
+        <a id="link-sanasafinaz" href="https://www.sanasafinaz.com/pk/catalogsearch/result/?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Sana Safinaz</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, Blue Area</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 5. Gul Ahmed -->
+        <a id="link-gulahmed" href="https://www.gulahmedshop.com/catalogsearch/result/?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Gul Ahmed</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">G-9, F-10, Chandni Chk</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 6. J. (Junaid Jamshed) -->
+        <a id="link-jdotpk" href="https://www.junaidjamshed.com/catalogsearch/result/?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>J.</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, Giga Mall, F-6</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 7. Nishat Linen -->
+        <a id="link-nishat" href="https://nishatlinen.com/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Nishat Linen</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, F-7, Saddar</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 8. Alkaram Studio -->
+        <a id="link-alkaram" href="https://www.alkaramstudio.com/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Alkaram</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, G-9, RWP</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 9. Generation -->
+        <a id="link-generation" href="https://generation.com.pk/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Generation</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">F-7 Jinnah Super, Giga</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 10. Ethnic -->
+        <a id="link-ethnic" href="https://ethnic.pk/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Ethnic</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">Centaurus, F-7, Saddar</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 11. Bonanza Satrangi -->
+        <a id="link-bonanza" href="https://bonanzasatrangi.com/search?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Bonanza</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">F-6, F-7, Bahria Town</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+        <!-- 12. Maria.B -->
+        <a id="link-mariab" href="https://www.mariab.pk/catalogsearch/result/?q=emerald+maxi" target="_blank" rel="noopener noreferrer" class="glass-panel p-3 rounded-lg border border-[var(--border)] hover:border-[#00E5FF] transition-all group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold text-[var(--text)] group-hover:text-[#00E5FF]">
+              <span>Maria.B</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-[var(--text-muted)]"></i>
+            </div>
+            <div class="text-[10px] font-mono text-[var(--text-muted)] mt-1 truncate">F-7, Centaurus, Saddar</div>
+          </div>
+          <span class="text-[9px] font-mono text-[#D4FF00] mt-2 block font-semibold">Live Search &rarr;</span>
+        </a>
+
+      </div>
+    </section>
+
     <!-- ── CATALOG SEARCH & RESULTS ───────────────────────────────────────────── -->
-    <section id="catalog" class="py-10 space-y-8 border-t border-[var(--border)]">
+    <section id="catalog" class="space-y-6 border-t border-[var(--border)] pt-10">
       
       <!-- Section Title & Live Filters Bar -->
-      <div class="space-y-6">
+      <div class="space-y-4">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span class="font-mono text-xs uppercase tracking-widest text-[#D4FF00]">Twin Cities Inventory</span>
-            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-[var(--text)] mt-1">Matched Real Products</h2>
+            <span class="font-mono text-xs uppercase tracking-widest text-[#D4FF00]">High-Accuracy Match Catalog</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-[var(--text)] mt-1">Twin Cities Matched Products</h2>
           </div>
           <div class="text-xs font-mono text-[var(--text-muted)]" id="resultsCountHeader">
-            Showing <span class="text-[var(--text)] font-bold" id="resultsCountSpan">12</span> verified results
+            Showing <span class="text-[var(--text)] font-bold text-sm" id="resultsCountSpan">38</span> ranked results
           </div>
         </div>
 
-        <!-- Filter Controls: Budget & Area -->
-        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+        <!-- Filter Controls: Search Keyword + Budget + Area + Store + Strict Mode -->
+        <div class="glass-panel p-5 rounded-xl border border-[var(--border)] space-y-4">
           
-          <!-- Area Selector -->
-          <div class="md:col-span-4 flex items-center gap-2">
-            <span class="text-xs font-mono text-[var(--text-muted)] whitespace-nowrap">Area:</span>
-            <div class="grid grid-cols-4 gap-1 w-full text-[11px] font-mono">
-              <button class="area-btn active px-2 py-1.5 rounded border border-[#00E5FF] bg-[rgba(0,229,255,0.1)] text-[#00E5FF] text-center" data-area="all">All</button>
-              <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Islamabad">ISB</button>
-              <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Rawalpindi">RWP</button>
-              <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Online">Online</button>
+          <!-- Top Row: Text Search Bar + Strict Color Match Toggle -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+            
+            <div class="md:col-span-8 relative">
+              <i class="fa-solid fa-filter absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-[var(--text-muted)]"></i>
+              <input type="text" id="catalogKeywordFilter" class="w-full glass-input text-xs font-mono rounded-lg pl-9 pr-4 py-2 outline-none focus:border-[#00E5FF]" placeholder="Filter items by title, fabric, or keyword (e.g. chiffon, velvet, lawn, organza)..." />
             </div>
+
+            <!-- Strict Color Match Checkbox -->
+            <div class="md:col-span-4 flex items-center justify-between md:justify-end gap-3 px-2">
+              <label for="strictColorToggle" class="text-xs font-mono text-[var(--text-muted)] cursor-pointer flex items-center gap-2">
+                <input type="checkbox" id="strictColorToggle" checked class="w-4 h-4 rounded accent-[#D4FF00] cursor-pointer" />
+                <span class="text-[var(--text)] font-semibold">Strict Color Match</span>
+              </label>
+              <button id="clearAllFiltersBtn" class="text-xs font-mono text-[#00E5FF] hover:underline">Clear</button>
+            </div>
+
           </div>
 
-          <!-- Budget Range Slider -->
-          <div class="md:col-span-5 space-y-1">
-            <div class="flex justify-between text-xs font-mono">
-              <span class="text-[var(--text-muted)]">Max Budget:</span>
-              <span class="font-bold text-[#D4FF00]" id="budgetDisplay">PKR 25,000</span>
+          <!-- Bottom Row: Area + Budget + Brand -->
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center pt-3 border-t border-[var(--border)]">
+            
+            <!-- Area Selector -->
+            <div class="md:col-span-4 flex items-center gap-2">
+              <span class="text-xs font-mono text-[var(--text-muted)] whitespace-nowrap">Region:</span>
+              <div class="grid grid-cols-4 gap-1 w-full text-[11px] font-mono">
+                <button class="area-btn active px-2 py-1.5 rounded border border-[#00E5FF] bg-[rgba(0,229,255,0.1)] text-[#00E5FF] text-center font-semibold" data-area="all">All</button>
+                <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Islamabad">ISB</button>
+                <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Rawalpindi">RWP</button>
+                <button class="area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center" data-area="Online">Online</button>
+              </div>
             </div>
-            <input type="range" id="budgetRange" min="3000" max="35000" step="1000" value="25000" class="w-full h-1.5 bg-[var(--border)] rounded-lg appearance-none cursor-pointer" />
-          </div>
 
-          <!-- Brand Filter Select -->
-          <div class="md:col-span-3 flex items-center gap-2">
-            <span class="text-xs font-mono text-[var(--text-muted)]">Store:</span>
-            <select id="brandFilterSelect" class="w-full glass-input text-xs font-mono rounded px-2.5 py-1.5 outline-none focus:border-[#D4FF00]">
-              <option value="all">All Stores</option>
-              <option value="khaadi.com">Khaadi</option>
-              <option value="sanasafinaz.com">Sana Safinaz</option>
-              <option value="gulahmed.com">Gul Ahmed</option>
-              <option value="jdotpk.com">J. (Junaid Jamshed)</option>
-              <option value="zara-pk.online">Zara PK</option>
-              <option value="bonanzasatrangi.com">Bonanza Satrangi</option>
-            </select>
+            <!-- Budget Range Slider -->
+            <div class="md:col-span-5 space-y-1">
+              <div class="flex justify-between text-xs font-mono">
+                <span class="text-[var(--text-muted)]">Max Budget (PKR):</span>
+                <span class="font-bold text-[#D4FF00]" id="budgetDisplay">PKR 35,000</span>
+              </div>
+              <input type="range" id="budgetRange" min="3000" max="40000" step="1000" value="35000" class="w-full h-1.5 bg-[var(--border)] rounded-lg appearance-none cursor-pointer" />
+            </div>
+
+            <!-- Brand Filter Select -->
+            <div class="md:col-span-3 flex items-center gap-2">
+              <span class="text-xs font-mono text-[var(--text-muted)]">Store:</span>
+              <select id="brandFilterSelect" class="w-full glass-input text-xs font-mono rounded px-2.5 py-1.5 outline-none focus:border-[#D4FF00]">
+                <option value="all">All 12 Stores</option>
+                <option value="sapphireonline.pk">Sapphire</option>
+                <option value="limelight.pk">Limelight</option>
+                <option value="khaadi.com">Khaadi</option>
+                <option value="sanasafinaz.com">Sana Safinaz</option>
+                <option value="gulahmed.com">Gul Ahmed</option>
+                <option value="jdotpk.com">J. (Junaid Jamshed)</option>
+                <option value="nishatlinen.com">Nishat Linen</option>
+                <option value="alkaramstudio.com">Alkaram</option>
+                <option value="generation.com.pk">Generation</option>
+                <option value="ethnic.pk">Ethnic</option>
+                <option value="bonanzasatrangi.com">Bonanza</option>
+                <option value="mariab.pk">Maria.B</option>
+              </select>
+            </div>
+
           </div>
 
         </div>
@@ -612,111 +896,193 @@
         <div class="w-12 h-12 rounded-full border border-[var(--border)] flex items-center justify-center mx-auto text-[var(--text-muted)]">
           <i class="fa-solid fa-sliders text-base"></i>
         </div>
-        <div class="font-display text-lg font-bold text-[var(--text)]">No Catalog Matches in this Budget/Area</div>
-        <div class="text-xs font-mono text-[var(--text-muted)]">Adjust budget slider or widen attribute constraints to find related styles.</div>
-        <button id="resetFiltersBtn" class="mt-2 btn-sky px-4 py-1.5 rounded text-xs font-mono uppercase">Reset Budget</button>
+        <div class="font-display text-lg font-bold text-[var(--text)]">No Catalog Matches Found</div>
+        <div class="text-xs font-mono text-[var(--text-muted)]">
+          Try turning off "Strict Color Match", widening your budget, or clicking "Search All 12 Regional Stores Online" above!
+        </div>
+        <button id="resetFiltersBtn" class="mt-2 btn-sky px-4 py-2 rounded text-xs font-mono uppercase font-semibold">Reset Filters</button>
       </div>
 
     </section>
 
+    <!-- ── CATALOG RELATIONSHIP GRAPH ───────────────────────────────────────── -->
+    <section id="graph" class="space-y-6 border-t border-[var(--border)] pt-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-[#00E5FF]">Catalog Relationship Map</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-[var(--text)] mt-1">Graphify the Catalog</h2>
+          <p class="text-xs font-mono text-[var(--text-muted)] mt-1">Explore which products connect to stores, attributes, and regions.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <select id="graphAttributeFilter" class="glass-input text-xs font-mono rounded px-3 py-2 outline-none focus:border-[#00E5FF]">
+            <option value="">All attributes</option>
+            <option value="color">Color</option>
+            <option value="silhouette">Silhouette</option>
+            <option value="neckline">Neckline</option>
+            <option value="sleeve">Sleeve</option>
+            <option value="length">Length</option>
+            <option value="occasion">Occasion</option>
+          </select>
+          <button id="refreshGraphBtn" class="btn-sky px-4 py-2 rounded font-mono text-xs uppercase font-semibold">
+            Refresh
+          </button>
+        </div>
+      </div>
+      <div class="graph-shell rounded-xl border border-[#27283D] overflow-hidden">
+        <div class="flex items-center justify-between px-4 py-3 border-b border-[#27283D] text-[11px] font-mono text-[#A7A9C0] bg-[#10101D]">
+          <span id="graphStatus">Loading catalog graph...</span>
+          <span>Click nodes · drag to pan · wheel to zoom</span>
+        </div>
+        <div class="graph-workspace">
+          <div id="graphCanvas" class="relative h-[560px] overflow-hidden bg-[#0B0B16]">
+            <canvas id="catalogGraphCanvas" role="img" aria-label="Catalog relationship graph"></canvas>
+          </div>
+          <aside id="graphCommunities" class="graph-communities">
+            <div class="text-[11px] font-mono uppercase tracking-widest text-[#D8D9E7] mb-3">Communities</div>
+            <label class="graph-check"><input id="graphSelectAll" type="checkbox" checked /> <span>Select all</span></label>
+            <div id="graphStoreFilters"></div>
+            <div id="graphDetails" class="border-t border-[#2B2C42] mt-4 pt-4 text-xs text-[#A7A9C0]">Select a node for details.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
     <!-- ── TWIN CITIES STORES SECTION ─────────────────────────────────────────── -->
-    <section id="stores" class="py-14 border-t border-[var(--border)] space-y-8">
+    <section id="stores" class="py-8 border-t border-[var(--border)] space-y-6">
       
       <div>
-        <span class="font-mono text-xs uppercase tracking-widest text-[#00E5FF]">Direct Branch Availability</span>
-        <h2 class="font-display text-3xl font-extrabold text-[var(--text)] mt-1">Twin Cities Verified Stockists</h2>
-        <p class="text-xs font-mono text-[var(--text-muted)] mt-1">Real branches indexed for in-person inspection in Islamabad & Rawalpindi.</p>
+        <span class="font-mono text-xs uppercase tracking-widest text-[#00E5FF]">Direct Branch Directory</span>
+        <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-[var(--text)] mt-1">Twin Cities Verified Brand Outlets</h2>
+        <p class="text-xs font-mono text-[var(--text-muted)] mt-1">Verified physical branch locations for in-person inspection and trial in Islamabad & Rawalpindi.</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 font-mono text-xs">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 font-mono text-xs">
         
-        <!-- Khaadi -->
-        <div class="glass-panel p-5 rounded-xl border border-[var(--border)] space-y-3">
-          <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
-            <span class="font-bold text-sm text-[var(--text)]">Khaadi</span>
-            <a href="https://khaadi.com" target="_blank" rel="noopener noreferrer" class="text-[11px] text-[#00E5FF] hover:underline flex items-center gap-1">
-              khaadi.com <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+        <!-- Sapphire -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">Sapphire</span>
+            <a href="https://pk.sapphireonline.pk" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
             </a>
           </div>
-          <div class="space-y-1.5 text-[var(--text-muted)]">
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> Centaurus Mall, F-8 Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> F-7 Markaz, Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#00E5FF] rounded-full"></span> Saddar, Rawalpindi</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#00E5FF] rounded-full"></span> Bahria Town Phase 7, Rawalpindi</div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• Beverly Centre, Blue Area</div>
+            <div>• Giga Mall, DHA Phase 2</div>
+            <div>• Saddar Cantt, Rawalpindi</div>
+          </div>
+        </div>
+
+        <!-- Limelight -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">Limelight</span>
+            <a href="https://www.limelight.pk" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+            </a>
+          </div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• F-10 Markaz, Islamabad</div>
+            <div>• Commercial Market, Satellite Town RWP</div>
+            <div>• Saddar, Rawalpindi</div>
+          </div>
+        </div>
+
+        <!-- Khaadi -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">Khaadi</span>
+            <a href="https://khaadi.com" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+            </a>
+          </div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• F-7 Markaz (Jinnah Super)</div>
+            <div>• Saddar, Rawalpindi</div>
+            <div>• Bahria Town Phase 7, Rawalpindi</div>
           </div>
         </div>
 
         <!-- Sana Safinaz -->
-        <div class="glass-panel p-5 rounded-xl border border-[var(--border)] space-y-3">
-          <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
             <span class="font-bold text-sm text-[var(--text)]">Sana Safinaz</span>
-            <a href="https://www.sanasafinaz.com" target="_blank" rel="noopener noreferrer" class="text-[11px] text-[#00E5FF] hover:underline flex items-center gap-1">
-              sanasafinaz.com <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            <a href="https://www.sanasafinaz.com" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
             </a>
           </div>
-          <div class="space-y-1.5 text-[var(--text-muted)]">
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> Centaurus Mall, F-8 Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> Blue Area, Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#00E5FF] rounded-full"></span> Gulrez Housing, Rawalpindi</div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• Beverly Centre, Blue Area</div>
+            <div>• Gulrez Housing, Rawalpindi</div>
           </div>
         </div>
 
         <!-- Gul Ahmed -->
-        <div class="glass-panel p-5 rounded-xl border border-[var(--border)] space-y-3">
-          <div class="flex items-center justify-between pb-2 border-b border-[var(--border)]">
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
             <span class="font-bold text-sm text-[var(--text)]">Gul Ahmed</span>
-            <a href="https://www.gulahmedshop.com" target="_blank" rel="noopener noreferrer" class="text-[11px] text-[#00E5FF] hover:underline flex items-center gap-1">
-              gulahmedshop.com <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+            <a href="https://www.gulahmedshop.com" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
             </a>
           </div>
-          <div class="space-y-1.5 text-[var(--text-muted)]">
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> G-9 Markaz, Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#D4FF00] rounded-full"></span> F-10 Markaz, Islamabad</div>
-            <div class="flex items-center gap-2"><span class="w-1 h-1 bg-[#00E5FF] rounded-full"></span> Chandni Chowk, Rawalpindi</div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• G-9 Markaz, Islamabad</div>
+            <div>• F-10 Markaz, Islamabad</div>
+            <div>• Chandni Chowk, Murree Road RWP</div>
+          </div>
+        </div>
+
+        <!-- J. -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">J. (Junaid Jamshed)</span>
+            <a href="https://www.junaidjamshed.com" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+            </a>
+          </div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• F-6 Supermarket, Islamabad</div>
+            <div>• Giga Mall, DHA Phase 2</div>
+            <div>• Saddar, Rawalpindi</div>
+          </div>
+        </div>
+
+        <!-- Nishat Linen -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">Nishat Linen</span>
+            <a href="https://nishatlinen.com" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+            </a>
+          </div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• Centaurus Mall, F-8 Islamabad</div>
+            <div>• F-7 Markaz, Islamabad</div>
+            <div>• Saddar Cantt, Rawalpindi</div>
+          </div>
+        </div>
+
+        <!-- Maria.B -->
+        <div class="glass-panel p-4 rounded-xl border border-[var(--border)] space-y-2">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[var(--border)]">
+            <span class="font-bold text-sm text-[var(--text)]">Maria.B</span>
+            <a href="https://www.mariab.pk" target="_blank" rel="noopener noreferrer" class="text-[10px] text-[#00E5FF] hover:underline flex items-center gap-1">
+              Store <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
+            </a>
+          </div>
+          <div class="space-y-1 text-[var(--text-muted)] text-[11px]">
+            <div>• F-7 Markaz, Islamabad</div>
+            <div>• Centaurus Mall, Islamabad</div>
+            <div>• Saddar Cantt, Rawalpindi</div>
           </div>
         </div>
 
       </div>
-    </section>
-
-    <!-- ── API SPECIFICATION / DEVELOPER INTERFACE ────────────────────────────── -->
-    <section id="api" class="py-14 border-t border-[var(--border)] space-y-6">
-      
-      <div class="flex items-center justify-between">
-        <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-[#D4FF00]">REST Architecture</span>
-          <h2 class="font-display text-2xl font-extrabold text-[var(--text)] mt-1">Core Endpoint Contract</h2>
-        </div>
-        <a href="http://localhost:8000/docs" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-[#00E5FF] hover:underline flex items-center gap-1">
-          Open FastAPI Swagger <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-        </a>
-      </div>
-
-      <div class="glass-panel rounded-xl border border-[var(--border)] overflow-hidden font-mono text-xs">
-        <div class="px-4 py-3 bg-[rgba(0,0,0,0.2)] border-b border-[var(--border)] flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">POST</span>
-            <span class="text-[var(--text)]">/extract</span>
-            <span class="text-[var(--text-muted)]">multipart/form-data (image + optional note)</span>
-          </div>
-          <span class="text-[10px] text-[var(--text-muted)]">Response Format: JSON</span>
-        </div>
-
-        <div class="p-4 bg-[var(--bg)] overflow-x-auto text-[#00E5FF]">
-<pre><code>{
-  "attributes": {
-    "silhouette": {"value": "a-line", "conf": 0.85},
-    "neckline":   {"value": "v-neck", "conf": 0.80},
-    "sleeve":     {"value": "full",   "conf": 0.90},
-    "length":     {"value": "maxi",   "conf": 0.75},
-    "color":      {"value": "green",  "conf": 0.92},
-    "occasion":   {"value": "formal", "conf": 0.70}
-  },
-  "source": "gemini-1.5-flash"
-}</code></pre>
-        </div>
-      </div>
-
     </section>
 
   </main>
@@ -727,15 +1093,15 @@
       
       <div class="flex items-center gap-3">
         <div class="w-6 h-6 rounded bg-gradient-to-tr from-[#00E5FF] to-[#D4FF00] flex items-center justify-center font-bold text-black text-[10px]">
-          VZ
+          BB
         </div>
-        <span>VYZOR STYLER © 2026 · TWIN CITIES APPAREL DISCOVERY</span>
+        <span>BAZZARBUDDY © 2026 · MULTI-STORE REGIONAL APPAREL SEARCH ENGINE</span>
       </div>
 
       <div class="flex items-center gap-6">
-        <a href="#engine" class="hover:text-[var(--text)]">Engine</a>
+        <a href="#engine" class="hover:text-[var(--text)]">Vision Engine</a>
+        <a href="#live-search-section" class="hover:text-[#00E5FF]">Live Online Search</a>
         <a href="#catalog" class="hover:text-[var(--text)]">Catalog</a>
-        <a href="#stores" class="hover:text-[var(--text)]">Stores</a>
         <a href="http://localhost:8000/docs" target="_blank" class="text-[#00E5FF] hover:underline">FastAPI Docs</a>
       </div>
 
@@ -744,227 +1110,7 @@
 
   <!-- ── CORE APPLICATION LOGIC ─────────────────────────────────────────────── -->
   <script>
-    // ── DATABASE OF REAL 60 CATALOG ITEMS WITH WORKING STORE SEARCH LINKS ─────
-    const CATALOG = [
-      {
-        id: 1,
-        title: "Emerald Chiffon Embellished Maxi",
-        store: "khaadi.com",
-        storeName: "Khaadi",
-        price: 8900,
-        currency: "PKR",
-        silhouette: "a-line",
-        neckline: "v-neck",
-        sleeve: "full",
-        length: "maxi",
-        color: "green",
-        occasion: "formal",
-        branch: "Centaurus Mall, F-8 Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500&auto=format&fit=crop&q=80",
-        url: "https://khaadi.com/search?q=emerald+maxi"
-      },
-      {
-        id: 2,
-        title: "Ivory Silk Fit & Flare Midi",
-        store: "khaadi.com",
-        storeName: "Khaadi",
-        price: 12500,
-        currency: "PKR",
-        silhouette: "fit-and-flare",
-        neckline: "sweetheart",
-        sleeve: "sleeveless",
-        length: "knee",
-        color: "white",
-        occasion: "wedding",
-        branch: "F-7 Markaz, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=500&auto=format&fit=crop&q=80",
-        url: "https://khaadi.com/search?q=ivory+dress"
-      },
-      {
-        id: 3,
-        title: "Sapphire Lawn V-Neck Kurta",
-        store: "sanasafinaz.com",
-        storeName: "Sana Safinaz",
-        price: 6500,
-        currency: "PKR",
-        silhouette: "straight",
-        neckline: "v-neck",
-        sleeve: "three-quarter",
-        length: "midi",
-        color: "blue",
-        occasion: "casual",
-        branch: "Blue Area, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.sanasafinaz.com/pk/catalogsearch/result/?q=blue+kurta"
-      },
-      {
-        id: 4,
-        title: "Emerald Embroidered A-Line Gown",
-        store: "gulahmed.com",
-        storeName: "Gul Ahmed",
-        price: 10500,
-        currency: "PKR",
-        silhouette: "a-line",
-        neckline: "v-neck",
-        sleeve: "three-quarter",
-        length: "maxi",
-        color: "green",
-        occasion: "formal",
-        branch: "Chandni Chowk, Rawalpindi",
-        area: "Rawalpindi",
-        image: "https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.gulahmedshop.com/catalogsearch/result/?q=embroidered+maxi"
-      },
-      {
-        id: 5,
-        title: "Black Velvet Halter Bodycon",
-        store: "jdotpk.com",
-        storeName: "J.",
-        price: 8900,
-        currency: "PKR",
-        silhouette: "bodycon",
-        neckline: "halter",
-        sleeve: "sleeveless",
-        length: "mini",
-        color: "black",
-        occasion: "party",
-        branch: "Saddar, Rawalpindi",
-        area: "Rawalpindi",
-        image: "https://images.unsplash.com/photo-1617922001439-4a2e6562f328?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.junaidjamshed.com/catalogsearch/result/?q=black+velvet"
-      },
-      {
-        id: 6,
-        title: "Teal Georgette Wrap Maxi",
-        store: "sanasafinaz.com",
-        storeName: "Sana Safinaz",
-        price: 9200,
-        currency: "PKR",
-        silhouette: "wrap",
-        neckline: "v-neck",
-        sleeve: "full",
-        length: "maxi",
-        color: "green",
-        occasion: "casual",
-        branch: "Centaurus Mall, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.sanasafinaz.com/pk/catalogsearch/result/?q=wrap+maxi"
-      },
-      {
-        id: 7,
-        title: "Blush Pink Festive Peshwas",
-        store: "bonanzasatrangi.com",
-        storeName: "Bonanza Satrangi",
-        price: 19500,
-        currency: "PKR",
-        silhouette: "ballgown",
-        neckline: "sweetheart",
-        sleeve: "cap",
-        length: "maxi",
-        color: "pink",
-        occasion: "wedding",
-        branch: "Jinnah Super F-7, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1580227974546-fbd3e95299d4?w=500&auto=format&fit=crop&q=80",
-        url: "https://bonanzasatrangi.com/search?q=peshwas"
-      },
-      {
-        id: 8,
-        title: "Minimalist Black High-Neck Maxi",
-        store: "zara-pk.online",
-        storeName: "Zara PK",
-        price: 16000,
-        currency: "PKR",
-        silhouette: "straight",
-        neckline: "high-neck",
-        sleeve: "full",
-        length: "maxi",
-        color: "black",
-        occasion: "formal",
-        branch: "Online Delivery (Twin Cities)",
-        area: "Online",
-        image: "https://images.unsplash.com/photo-1583744946564-b52ac1c389c8?w=500&auto=format&fit=crop&q=80",
-        url: "https://khaadi.com/search?q=black+maxi"
-      },
-      {
-        id: 9,
-        title: "Mustard Printed Casual Shift",
-        store: "khaadi.com",
-        storeName: "Khaadi",
-        price: 7200,
-        currency: "PKR",
-        silhouette: "a-line",
-        neckline: "round",
-        sleeve: "puff",
-        length: "midi",
-        color: "yellow",
-        occasion: "casual",
-        branch: "Bahria Town Phase 7, Rawalpindi",
-        area: "Rawalpindi",
-        image: "https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&auto=format&fit=crop&q=80",
-        url: "https://khaadi.com/search?q=mustard+dress"
-      },
-      {
-        id: 10,
-        title: "White Lace High-Neck Summer Tunic",
-        store: "gulahmed.com",
-        storeName: "Gul Ahmed",
-        price: 5600,
-        currency: "PKR",
-        silhouette: "fit-and-flare",
-        neckline: "off-shoulder",
-        sleeve: "sleeveless",
-        length: "midi",
-        color: "white",
-        occasion: "casual",
-        branch: "G-9 Markaz, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.gulahmedshop.com/catalogsearch/result/?q=white+dress"
-      },
-      {
-        id: 11,
-        title: "Rose Pink Tailored Bodycon",
-        store: "khaadi.com",
-        storeName: "Khaadi",
-        price: 4900,
-        currency: "PKR",
-        silhouette: "bodycon",
-        neckline: "round",
-        sleeve: "short",
-        length: "knee",
-        color: "pink",
-        occasion: "party",
-        branch: "Centaurus Mall, F-8 Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=500&auto=format&fit=crop&q=80",
-        url: "https://khaadi.com/search?q=bodycon"
-      },
-      {
-        id: 12,
-        title: "Classic White Cotton Wrap Dress",
-        store: "gulahmed.com",
-        storeName: "Gul Ahmed",
-        price: 3900,
-        currency: "PKR",
-        silhouette: "wrap",
-        neckline: "v-neck",
-        sleeve: "short",
-        length: "knee",
-        color: "white",
-        occasion: "casual",
-        branch: "F-10 Markaz, Islamabad",
-        area: "Islamabad",
-        image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=500&auto=format&fit=crop&q=80",
-        url: "https://www.gulahmedshop.com/catalogsearch/result/?q=cotton+wrap"
-      }
-    ];
-
-    // ── NEAR-MISS STYLE GRAPH WEIGHTS (Identical to backend/data/similarity.json)
+    // ── NEAR-MISS STYLE GRAPH WEIGHTS ───────────────────────────────────────
     const SIMILARITY = {
       silhouette: {
         "a-line|fit-and-flare": 0.75, "a-line|shift": 0.5, "straight|shift": 0.7,
@@ -997,10 +1143,15 @@
     };
 
     let filterArea = "all";
-    let filterMaxBudget = 25000;
+    let filterMaxBudget = 35000;
     let filterBrand = "all";
+    let filterKeyword = "";
+    let filterStrictColor = true;
+    let catalogResults = [];
+    let catalogRequestId = 0;
+    const API_BASE = "http://localhost:8000";
 
-    // ── ATTR SCORING ALGORITHM ──────────────────────────────────────────────
+    // ── HIGH-ACCURACY SCORING ALGORITHM (Color 30%, Silhouette 25%) ─────────
     function computeSimilarity(attr, a, b) {
       if (!a || !b || a === "unknown" || b === "unknown") return 0.0;
       if (a === b) return 1.0;
@@ -1009,7 +1160,8 @@
     }
 
     function evaluateProduct(p, query) {
-      const weights = { silhouette: 0.25, neckline: 0.20, sleeve: 0.15, length: 0.20, color: 0.12, occasion: 0.08 };
+      // Prioritize visual accuracy: Color (30%), Silhouette (25%), Length (18%), Neckline (12%), Sleeve (10%), Occasion (5%)
+      const weights = { color: 0.30, silhouette: 0.25, length: 0.18, neckline: 0.12, sleeve: 0.10, occasion: 0.05 };
       let totalW = 0, gotW = 0;
       let matched = [];
       let differs = [];
@@ -1018,6 +1170,11 @@
         const want = query[attr];
         const have = p[attr];
         totalW += w;
+
+        if (want === "unknown") {
+          gotW += w * 0.8; // neutral
+          continue;
+        }
 
         const sim = computeSimilarity(attr, want, have);
         if (sim === 1.0) {
@@ -1031,8 +1188,40 @@
         }
       }
 
+      // Strong penalty if color does not match and user selected a specific color
+      if (query.color !== "unknown" && p.color !== query.color) {
+        gotW = Math.min(gotW, totalW * 0.55); // Caps unmatched color score to 55%
+      }
+
       const score = Math.round((gotW / totalW) * 100);
       return { score, matched, differs };
+    }
+
+    // ── LIVE REGIONAL STORE SEARCH URL BUILDER ──────────────────────────────
+    function updateLiveSearchUrls() {
+      const qInput = document.getElementById("liveSearchQueryInput");
+      const query = qInput.value.trim() || `${currentAttributes.color} ${currentAttributes.silhouette} ${currentAttributes.length} dress`;
+      const encoded = encodeURIComponent(query);
+
+      const storeLinks = {
+        "sapphire": `https://pk.sapphireonline.pk/search?q=${encoded}`,
+        "limelight": `https://www.limelight.pk/search?q=${encoded}`,
+        "khaadi": `https://khaadi.com/search?q=${encoded}`,
+        "sanasafinaz": `https://www.sanasafinaz.com/pk/catalogsearch/result/?q=${encoded}`,
+        "gulahmed": `https://www.gulahmedshop.com/catalogsearch/result/?q=${encoded}`,
+        "jdotpk": `https://www.junaidjamshed.com/catalogsearch/result/?q=${encoded}`,
+        "nishat": `https://nishatlinen.com/search?q=${encoded}`,
+        "alkaram": `https://www.alkaramstudio.com/search?q=${encoded}`,
+        "generation": `https://generation.com.pk/search?q=${encoded}`,
+        "ethnic": `https://ethnic.pk/search?q=${encoded}`,
+        "bonanza": `https://bonanzasatrangi.com/search?q=${encoded}`,
+        "mariab": `https://www.mariab.pk/catalogsearch/result/?q=${encoded}`
+      };
+
+      for (const [key, url] of Object.entries(storeLinks)) {
+        const el = document.getElementById(`link-${key}`);
+        if (el) el.href = url;
+      }
     }
 
     // ── RENDER PRODUCT CARDS ────────────────────────────────────────────────
@@ -1041,17 +1230,30 @@
       const noResults = document.getElementById("noResultsBox");
       const countSpan = document.getElementById("resultsCountSpan");
       
-      // Calculate scores for all items
-      let scored = CATALOG.map(item => {
-        const evalRes = evaluateProduct(item, currentAttributes);
-        return { ...item, ...evalRes };
-      });
-
       // Apply Filters
-      let filtered = scored.filter(item => {
+      let filtered = catalogResults.filter(item => {
+        // Price limit
         if (item.price > filterMaxBudget) return false;
-        if (filterArea !== "all" && item.area !== filterArea && item.area !== "Online") return false;
+        
+        // Area limit
+        if (filterArea !== "all" && !(item.branches || []).some(branch => branch.includes(filterArea))) return false;
+        
+        // Brand limit
         if (filterBrand !== "all" && item.store !== filterBrand) return false;
+
+        // Strict Color Match Filter
+        if (filterStrictColor && currentAttributes.color !== "unknown") {
+          if (item.color !== currentAttributes.color) return false;
+        }
+
+        // Keyword filter
+        if (filterKeyword) {
+          const matchTitle = item.title.toLowerCase().includes(filterKeyword);
+          const matchStore = item.store.toLowerCase().includes(filterKeyword);
+          const matchBranch = (item.branches || []).join(" ").toLowerCase().includes(filterKeyword);
+          if (!matchTitle && !matchStore && !matchBranch) return false;
+        }
+
         return true;
       });
 
@@ -1069,11 +1271,9 @@
       noResults.classList.add("hidden");
 
       grid.innerHTML = filtered.map(item => {
-        // Label styling
         const scoreBadgeClass = item.score >= 80 ? "badge-lime" : "badge-sky";
         const scoreLabel = item.score >= 80 ? "Close Match" : (item.score >= 60 ? "Similar" : "Inspired-by");
         
-        // Explain differences
         let diffNote = "Perfect Attribute Match";
         if (item.differs.length > 0) {
           const topDiff = item.differs[0];
@@ -1085,7 +1285,7 @@
             
             <!-- Image & Match Badge -->
             <div class="relative h-56 overflow-hidden bg-black/20">
-              <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+              ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'), { className: 'w-full h-full flex items-center justify-center text-sm text-[var(--text-muted)]', textContent: 'Live store image unavailable' }))" />` : `<div class="w-full h-full flex items-center justify-center text-sm text-[var(--text-muted)]">Live store image unavailable</div>`}
               
               <!-- Match Score Pill -->
               <div class="absolute top-3 right-3 px-2.5 py-1 rounded font-mono text-xs font-bold ${scoreBadgeClass} backdrop-blur-md shadow-md">
@@ -1094,7 +1294,7 @@
 
               <!-- Brand Tag -->
               <div class="absolute bottom-3 left-3 px-2 py-0.5 rounded font-mono text-[10px] bg-black/70 text-white backdrop-blur-sm border border-white/10 uppercase">
-                ${item.storeName}
+                ${item.store}
               </div>
             </div>
 
@@ -1107,7 +1307,7 @@
                 </h3>
                 <div class="text-[11px] font-mono text-[var(--text-muted)] flex items-center gap-1.5">
                   <i class="fa-solid fa-location-dot text-[#00E5FF] text-[10px]"></i>
-                  <span class="truncate">${item.branch}</span>
+                  <span class="truncate">${item.branches?.[0] || "Online store"}</span>
                 </div>
               </div>
 
@@ -1141,23 +1341,56 @@
       }).join("");
     }
 
-    // ── UPDATE ATTRIBUTE DROPDOWNS & REFRESH ─────────────────────────────────
+    // ── SYNC ATTRIBUTES & UI ────────────────────────────────────────────────
     function syncAttributeSelectors() {
       for (const [attr, val] of Object.entries(currentAttributes)) {
         const el = document.getElementById(`attr-${attr}`);
         if (el) el.value = val;
       }
-      updateGraphExplanation();
-      renderCatalog();
+      
+      const queryStr = `${currentAttributes.color} ${currentAttributes.silhouette} ${currentAttributes.length} dress`.replace(/unknown\s*/g, "").trim();
+      document.getElementById("liveSearchQueryInput").value = queryStr;
+      document.getElementById("querySummaryText").textContent = queryStr.toUpperCase();
+      
+      updateLiveSearchUrls();
+      fetchCatalog();
     }
 
-    function updateGraphExplanation() {
-      const textEl = document.getElementById("graphExplanationText");
-      if (!textEl) return;
-      textEl.innerHTML = `Query locked: Silhouette (<span class="text-[#D4FF00] font-semibold">${currentAttributes.silhouette}</span>), Neckline (<span class="text-[#00E5FF] font-semibold">${currentAttributes.neckline}</span>), Sleeve (<span class="text-[#D4FF00] font-semibold">${currentAttributes.sleeve}</span>), Length (<span class="text-[#00E5FF] font-semibold">${currentAttributes.length}</span>), Color (<span class="text-[#D4FF00] font-semibold">${currentAttributes.color}</span>). Re-calculating nearest neighbors across inventory.`;
+    async function fetchCatalog() {
+      const requestId = ++catalogRequestId;
+      const statusText = document.getElementById("backendStatusText");
+      try {
+        statusText.textContent = "SEARCHING STORE CATALOG...";
+        statusText.classList.remove("text-emerald-400");
+        const res = await fetch(`${API_BASE}/search`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            attributes: currentAttributes,
+            budget_max: filterMaxBudget,
+            area: filterArea === "all" ? null : filterArea
+          }),
+          signal: AbortSignal.timeout(15000)
+        });
+        if (!res.ok) throw new Error(`Catalog search failed (${res.status})`);
+        const data = await res.json();
+        if (requestId !== catalogRequestId) return;
+        catalogResults = data.results || [];
+        statusText.textContent = `STORE CATALOG CONNECTED (${catalogResults.length} RESULTS)`;
+        statusText.classList.add("text-emerald-400");
+        renderCatalog();
+      } catch (error) {
+        if (requestId !== catalogRequestId) return;
+        catalogResults = [];
+        statusText.textContent = "STORE CATALOG UNAVAILABLE";
+        statusText.classList.remove("text-emerald-400");
+        document.getElementById("noResultsBox").classList.remove("hidden");
+        console.error("Store catalog search failed:", error);
+        renderCatalog();
+      }
     }
 
-    // ── FILE UPLOAD HANDLING (WORKING REAL SCAN & LOCAL FALLBACK) ────────────
+    // ── FILE UPLOAD HANDLING (WORKING SCAN & CLIENT INFERENCE) ───────────────
     const dropZone = document.getElementById("dropZone");
     const fileInput = document.getElementById("sketchFileInput");
     const previewContainer = document.getElementById("previewContainer");
@@ -1210,16 +1443,14 @@
       reader.readAsDataURL(file);
     }
 
-    // ANALYZE BUTTON ACTION
+    // ANALYZE ACTION
     analyzeBtn.addEventListener("click", async () => {
-      // Trigger scanning animation
       scannerOverlay.classList.remove("hidden");
       analyzeBtn.disabled = true;
-      analyzeBtnText.textContent = "EXTRACTING WITH GEMINI VISION...";
+      analyzeBtnText.textContent = "EXTRACTING WITH VISION AGENT...";
 
       let extractedData = null;
 
-      // 1. Try real backend extraction if image is uploaded
       if (uploadedFile) {
         try {
           const formData = new FormData();
@@ -1228,20 +1459,20 @@
           const res = await fetch("http://localhost:8000/extract", {
             method: "POST",
             body: formData,
-            signal: AbortSignal.timeout(4000) // 4 sec timeout
+            signal: AbortSignal.timeout(120000)
           });
 
           if (res.ok) {
             const json = await res.json();
             extractedData = json.attributes;
-            document.getElementById("extractionSourceBadge").textContent = `SOURCE: ${json.source.toUpperCase()}`;
+            document.getElementById("extractionSourceBadge").textContent = `AI SOURCE: ${json.source.toUpperCase()}`;
           }
         } catch (err) {
-          console.log("Local backend extraction not reachable, using vision inference model.");
+          document.getElementById("extractionSourceBadge").textContent = "AI EXTRACTION FAILED";
+          console.error("AI extraction failed:", err);
         }
       }
 
-      // 2. Intelligent client-side fallback if backend not running or no file
       setTimeout(() => {
         scannerOverlay.classList.add("hidden");
         analyzeBtn.disabled = false;
@@ -1253,44 +1484,32 @@
               currentAttributes[attr] = obj.value;
             }
           }
-        } else {
-          // Keep current or randomize slightly to demonstrate change
-          currentAttributes = {
-            silhouette: "a-line",
-            neckline: "v-neck",
-            sleeve: "full",
-            length: "maxi",
-            color: "green",
-            occasion: "formal"
-          };
         }
 
         syncAttributeSelectors();
-        
-        // Scroll smoothly to results
-        document.getElementById("catalog").scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("live-search-section").scrollIntoView({ behavior: 'smooth' });
       }, 1000);
     });
 
-    // ── SAMPLE SKETCH PRESETS ────────────────────────────────────────────────
+    // ── SAMPLE SKETCHES ──────────────────────────────────────────────────────
     document.querySelectorAll(".sample-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener("click", () => {
         const type = btn.getAttribute("data-sample");
         uploadPrompt.classList.add("hidden");
         previewContainer.classList.remove("hidden");
 
         if (type === "emerald") {
-          sketchPreviewImg.src = "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400";
+          sketchPreviewImg.src = "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500";
           previewMeta.textContent = "emerald_maxi_sketch.jpg (Sample)";
           currentAttributes = { silhouette: "a-line", neckline: "v-neck", sleeve: "full", length: "maxi", color: "green", occasion: "formal" };
-        } else if (type === "ivory") {
-          sketchPreviewImg.src = "https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=400";
-          previewMeta.textContent = "ivory_lace_design.jpg (Sample)";
-          currentAttributes = { silhouette: "fit-and-flare", neckline: "sweetheart", sleeve: "sleeveless", length: "knee", color: "white", occasion: "wedding" };
-        } else if (type === "velvet") {
-          sketchPreviewImg.src = "https://images.unsplash.com/photo-1617922001439-4a2e6562f328?w=400";
-          previewMeta.textContent = "black_velvet_sketch.jpg (Sample)";
-          currentAttributes = { silhouette: "bodycon", neckline: "halter", sleeve: "sleeveless", length: "mini", color: "black", occasion: "party" };
+        } else if (type === "cobalt") {
+          sketchPreviewImg.src = "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=500";
+          previewMeta.textContent = "cobalt_kurti_design.jpg (Sample)";
+          currentAttributes = { silhouette: "straight", neckline: "round", sleeve: "three-quarter", length: "knee", color: "blue", occasion: "casual" };
+        } else if (type === "ruby") {
+          sketchPreviewImg.src = "https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb?w=500";
+          previewMeta.textContent = "ruby_festive_maxi.jpg (Sample)";
+          currentAttributes = { silhouette: "a-line", neckline: "sweetheart", sleeve: "full", length: "maxi", color: "red", occasion: "wedding" };
         }
 
         fileBadge.textContent = "SAMPLE LOADED";
@@ -1300,13 +1519,12 @@
     });
 
     // ── INTERACTIVE ATTRIBUTE DROPDOWNS ─────────────────────────────────────
-    ["silhouette", "neckline", "sleeve", "length", "color", "occasion"].forEach(attr => {
+    ["color", "silhouette", "length", "sleeve", "neckline", "occasion"].forEach(attr => {
       const el = document.getElementById(`attr-${attr}`);
       if (el) {
         el.addEventListener("change", (e) => {
           currentAttributes[attr] = e.target.value;
-          updateGraphExplanation();
-          renderCatalog();
+          syncAttributeSelectors();
         });
       }
     });
@@ -1316,13 +1534,41 @@
       syncAttributeSelectors();
     });
 
-    // ── FILTER CONTROLS ──────────────────────────────────────────────────────
+    // ── LIVE SEARCH DISPATCHER ACTIONS ──────────────────────────────────────
+    document.getElementById("liveSearchQueryInput").addEventListener("input", updateLiveSearchUrls);
+    
+    document.getElementById("refreshLiveQueryBtn").addEventListener("click", () => {
+      const queryStr = `${currentAttributes.color} ${currentAttributes.silhouette} ${currentAttributes.length} dress`.replace(/unknown\s*/g, "").trim();
+      document.getElementById("liveSearchQueryInput").value = queryStr;
+      updateLiveSearchUrls();
+    });
+
+    document.getElementById("openAllStoresBtn").addEventListener("click", () => {
+      // Opens top 4 representative stores in parallel
+      const q = encodeURIComponent(document.getElementById("liveSearchQueryInput").value.trim());
+      window.open(`https://pk.sapphireonline.pk/search?q=${q}`, '_blank');
+      window.open(`https://www.limelight.pk/search?q=${q}`, '_blank');
+      window.open(`https://khaadi.com/search?q=${q}`, '_blank');
+      window.open(`https://www.sanasafinaz.com/pk/catalogsearch/result/?q=${q}`, '_blank');
+    });
+
+    // ── CATALOG FILTERS & KEYWORD SEARCH ────────────────────────────────────
+    document.getElementById("catalogKeywordFilter").addEventListener("input", (e) => {
+      filterKeyword = e.target.value.toLowerCase().trim();
+      renderCatalog();
+    });
+
+    document.getElementById("strictColorToggle").addEventListener("change", (e) => {
+      filterStrictColor = e.target.checked;
+      renderCatalog();
+    });
+
     document.querySelectorAll(".area-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".area-btn").forEach(b => {
           b.className = "area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center";
         });
-        btn.className = "area-btn active px-2 py-1.5 rounded border border-[#00E5FF] bg-[rgba(0,229,255,0.1)] text-[#00E5FF] text-center";
+        btn.className = "area-btn active px-2 py-1.5 rounded border border-[#00E5FF] bg-[rgba(0,229,255,0.1)] text-[#00E5FF] text-center font-semibold";
         filterArea = btn.getAttribute("data-area");
         renderCatalog();
       });
@@ -1341,14 +1587,215 @@
       renderCatalog();
     });
 
-    document.getElementById("resetFiltersBtn").addEventListener("click", () => {
+    function resetFilters() {
       filterMaxBudget = 35000;
       budgetRange.value = 35000;
       budgetDisplay.textContent = "PKR 35,000";
       filterArea = "all";
       filterBrand = "all";
+      filterKeyword = "";
+      filterStrictColor = true;
+      document.getElementById("strictColorToggle").checked = true;
+      document.getElementById("catalogKeywordFilter").value = "";
       document.getElementById("brandFilterSelect").value = "all";
+      document.querySelectorAll(".area-btn").forEach(b => {
+        b.className = "area-btn px-2 py-1.5 rounded border border-[var(--border)] text-[var(--text-muted)] hover:border-[#00E5FF] text-center";
+      });
+      document.querySelector(".area-btn[data-area='all']").className = "area-btn active px-2 py-1.5 rounded border border-[#00E5FF] bg-[rgba(0,229,255,0.1)] text-[#00E5FF] text-center font-semibold";
       renderCatalog();
+    }
+
+    document.getElementById("resetFiltersBtn").addEventListener("click", resetFilters);
+    document.getElementById("clearAllFiltersBtn").addEventListener("click", resetFilters);
+
+    // ── CATALOG RELATIONSHIP GRAPH ──────────────────────────────────────────
+    let graphData = { nodes: [], edges: [] };
+    let graphVisibleStores = new Set();
+    let graphAnimation;
+    let graphTransform = { x: 0, y: 0, scale: 1 };
+    let graphDragging = false;
+    let graphDragStart;
+    const graphStoreColors = ["#55D6BE", "#F6B73C", "#FF6B8A", "#7C8CFF", "#A4D65E", "#FF8D4D", "#5BC0EB", "#D98CFF", "#F07C9C", "#77DD77", "#F5E663", "#B6A6FF"];
+    const graphColors = { product: "#A7A9C0", store: "#F6B73C", attribute: "#4DD6C3", area: "#8F87FF" };
+    const graphStoreColor = new Map();
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      }[char]));
+    }
+
+    function showGraphDetails(node) {
+      const details = document.getElementById("graphDetails");
+      const connected = graphData.edges.filter(edge => edge.source === node.id || edge.target === node.id);
+      const related = connected.map(edge => {
+        const id = edge.source === node.id ? edge.target : edge.source;
+        return graphData.nodes.find(item => item.id === id);
+      }).filter(Boolean).slice(0, 8);
+      let html = `<div class="text-xs font-mono uppercase tracking-wider" style="color:${graphColors[node.type]}">${escapeHtml(node.type)}</div>`;
+      html += `<h3 class="font-bold text-[var(--text)] mt-2">${escapeHtml(node.label)}</h3>`;
+      if (node.type === "product") {
+        html += `<p class="text-xs font-mono text-[var(--text-muted)] mt-2">Rs. ${Number(node.price || 0).toLocaleString()} ${escapeHtml(node.currency || "PKR")}</p>`;
+        html += `<a class="btn-sky inline-flex mt-4 px-3 py-2 rounded text-[11px] font-mono" href="${escapeHtml(node.url)}" target="_blank" rel="noopener noreferrer">Open product page</a>`;
+      } else if (node.type === "attribute") {
+        html += `<p class="text-xs font-mono text-[var(--text-muted)] mt-2">${escapeHtml(node.attribute)}</p>`;
+      } else if (node.type === "store") {
+        html += `<p class="text-xs font-mono text-[var(--text-muted)] mt-2">${escapeHtml(node.domain)}</p>`;
+      }
+      if (related.length) {
+        html += `<div class="border-t border-[var(--border)] mt-4 pt-3"><div class="text-[10px] font-mono uppercase text-[var(--text-muted)] mb-2">Connections</div>`;
+        html += related.map(item => `<div class="text-xs text-[var(--text)] truncate">${escapeHtml(item.label)}</div>`).join("");
+        html += `</div>`;
+      }
+      details.innerHTML = html;
+    }
+
+    function renderGraph() {
+      const canvas = document.getElementById("catalogGraphCanvas");
+      const host = document.getElementById("graphCanvas");
+      const ratio = window.devicePixelRatio || 1;
+      const width = host.clientWidth;
+      const height = host.clientHeight;
+      canvas.width = width * ratio;
+      canvas.height = height * ratio;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      const ctx = canvas.getContext("2d");
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+      ctx.fillStyle = "#0B0B16";
+      ctx.fillRect(0, 0, width, height);
+      const nodes = graphData.nodes.filter(node => node.type !== "store" || graphVisibleStores.has(node.domain));
+      const visibleIds = new Set(nodes.map(node => node.id));
+      const edges = graphData.edges.filter(edge => visibleIds.has(edge.source) && visibleIds.has(edge.target));
+      if (!nodes.length) return;
+      const nodeMap = new Map(nodes.map(node => [node.id, node]));
+      nodes.forEach((node, index) => {
+        if (node.x === undefined) {
+          const angle = index * 2.39996;
+          const radius = 70 + Math.sqrt(index) * 42;
+          node.x = width / 2 + Math.cos(angle) * radius;
+          node.y = height / 2 + Math.sin(angle) * radius * 0.75;
+          node.vx = 0;
+          node.vy = 0;
+        }
+      });
+      for (let pass = 0; pass < 3; pass++) {
+        edges.forEach(edge => {
+          const a = nodeMap.get(edge.source), b = nodeMap.get(edge.target);
+          if (!a || !b) return;
+          const dx = b.x - a.x, dy = b.y - a.y;
+          const distance = Math.max(Math.hypot(dx, dy), 1);
+          const force = (distance - 86) * 0.001;
+          a.vx += dx / distance * force; a.vy += dy / distance * force;
+          b.vx -= dx / distance * force; b.vy -= dy / distance * force;
+        });
+        nodes.forEach(node => {
+          node.vx *= 0.94; node.vy *= 0.94;
+          node.x += node.vx; node.y += node.vy;
+          node.x = Math.max(12, Math.min(width - 12, node.x));
+          node.y = Math.max(12, Math.min(height - 12, node.y));
+        });
+      }
+      ctx.save();
+      ctx.translate(graphTransform.x, graphTransform.y);
+      ctx.scale(graphTransform.scale, graphTransform.scale);
+      ctx.lineWidth = 0.55;
+      edges.forEach(edge => {
+        const a = nodeMap.get(edge.source), b = nodeMap.get(edge.target);
+        ctx.strokeStyle = "rgba(120, 132, 180, .28)";
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+      });
+      nodes.forEach(node => {
+        const color = node.type === "store" ? graphStoreColor.get(node.domain) : graphColors[node.type];
+        const radius = node.type === "product" ? 2.2 : node.type === "store" ? 5 : 3.2;
+        ctx.beginPath(); ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = color || "#A7A9C0"; ctx.shadowColor = color || "#A7A9C0"; ctx.shadowBlur = node.type === "store" ? 7 : 3; ctx.fill(); ctx.shadowBlur = 0;
+      });
+      ctx.restore();
+      cancelAnimationFrame(graphAnimation);
+      graphAnimation = requestAnimationFrame(renderGraph);
+    }
+
+    function populateGraphStores() {
+      const stores = [...new Set(graphData.nodes.filter(node => node.type === "store").map(node => node.domain))];
+      const container = document.getElementById("graphStoreFilters");
+      stores.forEach((store, index) => {
+        graphStoreColor.set(store, graphStoreColors[index % graphStoreColors.length]);
+      });
+      graphVisibleStores = new Set(stores);
+      container.innerHTML = stores.map(store => `<label class="graph-community-label"><input type="checkbox" checked data-graph-store="${escapeHtml(store)}"><span class="graph-community-dot" style="background:${graphStoreColor.get(store)}"></span><span>${escapeHtml(store)}</span></label>`).join("");
+      container.querySelectorAll("[data-graph-store]").forEach(input => input.addEventListener("change", event => {
+        if (event.target.checked) graphVisibleStores.add(event.target.dataset.graphStore);
+        else graphVisibleStores.delete(event.target.dataset.graphStore);
+        renderGraph();
+      }));
+    }
+
+    async function loadGraph() {
+      const status = document.getElementById("graphStatus");
+      const attribute = document.getElementById("graphAttributeFilter").value;
+      status.textContent = "Loading catalog graph...";
+      try {
+        const suffix = attribute ? `?attribute=${encodeURIComponent(attribute)}` : "";
+        const response = await fetch(`${API_BASE}/graph${suffix}`);
+        if (!response.ok) throw new Error(`Graph request failed (${response.status})`);
+        graphData = await response.json();
+        populateGraphStores();
+        status.textContent = `${graphData.product_count} products · ${graphData.edge_count} relationships`;
+        renderGraph();
+      } catch (error) {
+        status.textContent = "Graph unavailable: start the backend API";
+        document.getElementById("catalogGraphCanvas").getContext("2d").clearRect(0, 0, 1000, 600);
+        console.error("Catalog graph failed:", error);
+      }
+    }
+
+    document.getElementById("graphAttributeFilter").addEventListener("change", loadGraph);
+    document.getElementById("graphSelectAll").addEventListener("change", event => {
+      document.querySelectorAll("[data-graph-store]").forEach(input => {
+        input.checked = event.target.checked;
+        if (event.target.checked) graphVisibleStores.add(input.dataset.graphStore);
+        else graphVisibleStores.delete(input.dataset.graphStore);
+      });
+      renderGraph();
+    });
+    document.getElementById("refreshGraphBtn").addEventListener("click", loadGraph);
+    const graphCanvas = document.getElementById("catalogGraphCanvas");
+    graphCanvas.addEventListener("wheel", event => {
+      event.preventDefault();
+      const factor = event.deltaY < 0 ? 1.1 : 0.9;
+      graphTransform.scale = Math.max(0.35, Math.min(3, graphTransform.scale * factor));
+      renderGraph();
+    }, { passive: false });
+    graphCanvas.addEventListener("pointerdown", event => {
+      graphDragging = true;
+      graphDragStart = { x: event.clientX, y: event.clientY };
+      graphCanvas.setPointerCapture(event.pointerId);
+    });
+    graphCanvas.addEventListener("pointermove", event => {
+      if (!graphDragging) return;
+      graphTransform.x += event.clientX - graphDragStart.x;
+      graphTransform.y += event.clientY - graphDragStart.y;
+      graphDragStart = { x: event.clientX, y: event.clientY };
+      renderGraph();
+    });
+    graphCanvas.addEventListener("pointerup", event => {
+      graphDragging = false;
+      graphCanvas.releasePointerCapture(event.pointerId);
+    });
+    graphCanvas.addEventListener("click", event => {
+      if (graphDragging) return;
+      const rect = graphCanvas.getBoundingClientRect();
+      const x = (event.clientX - rect.left - graphTransform.x) / graphTransform.scale;
+      const y = (event.clientY - rect.top - graphTransform.y) / graphTransform.scale;
+      const clicked = graphData.nodes.find(node => {
+        if (node.x === undefined || (node.type === "store" && !graphVisibleStores.has(node.domain))) return false;
+        return Math.hypot(node.x - x, node.y - y) < (node.type === "store" ? 11 : 9);
+      });
+      if (clicked) showGraphDetails(clicked);
+    });
+    window.addEventListener("resize", () => {
+      if (graphData.nodes.length) renderGraph();
     });
 
     // ── DARK / LIGHT THEME TOGGLE ───────────────────────────────────────────
@@ -1358,7 +1805,7 @@
 
     function setTheme(theme) {
       htmlEl.setAttribute("data-theme", theme);
-      localStorage.setItem("vyzor-theme", theme);
+      localStorage.setItem("bazzarbuddy-minimal-theme", theme);
       if (theme === "light") {
         themeIcon.className = "fa-solid fa-sun text-amber-500";
       } else {
@@ -1366,7 +1813,7 @@
       }
     }
 
-    const savedTheme = localStorage.getItem("vyzor-theme") || "dark";
+    const savedTheme = localStorage.getItem("bazzarbuddy-minimal-theme") || localStorage.getItem("vyzor-minimal-theme") || "light";
     setTheme(savedTheme);
 
     themeToggleBtn.addEventListener("click", () => {
@@ -1374,7 +1821,7 @@
       setTheme(nextTheme);
     });
 
-    // ── SYSTEM HEALTH CHECK (PING LOCAL FASTAPI) ─────────────────────────────
+    // ── SYSTEM HEALTH CHECK ──────────────────────────────────────────────────
     async function checkBackendHealth() {
       const statusText = document.getElementById("backendStatusText");
       try {
@@ -1385,13 +1832,14 @@
           statusText.classList.add("text-emerald-400");
         }
       } catch (e) {
-        statusText.textContent = "STANDALONE MODE (OFFLINE READY)";
+        statusText.textContent = "STANDALONE READY (ALL 12 STORES)";
       }
     }
 
     // Init
     syncAttributeSelectors();
     checkBackendHealth();
+    loadGraph();
   </script>
 
 </body>

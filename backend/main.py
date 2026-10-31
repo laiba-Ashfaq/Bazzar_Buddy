@@ -1,12 +1,17 @@
 """
 main.py — FastAPI application entry point
-Endpoints: GET /health, POST /extract, POST /search
+Endpoints: GET /health, POST /extract, POST /search, GET /graph
 """
 import json
+import html
 import os
+import re
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Optional
+from urllib.parse import quote_plus
 
+import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -41,20 +46,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Load data at startup ──────────────────────────────────────────────────────
-STORES: list[dict] = []
+# ── Load data at module level & startup ──────────────────────────────────────
+STORES_PATH = Path(__file__).parent / "data" / "stores.json"
+STORES: list[dict] = json.loads(STORES_PATH.read_text()) if STORES_PATH.exists() else []
 PRODUCTS: list[dict] = []
+STORE_IMAGE_CACHE: dict[str, Optional[str]] = {}
+STORE_IMAGE_CACHE_QUERY: Optional[str] = None
+
+STORE_SEARCH_URLS = {
+    "sapphireonline.pk": "https://pk.sapphireonline.pk/search?q={query}",
+    "limelight.pk": "https://www.limelight.pk/search?q={query}",
+    "khaadi.com": "https://global.khaadi.com/search?q={query}",
+    "sanasafinaz.com": "https://www.sanasafinaz.com/pk/catalogsearch/result/?q={query}",
+    "gulahmed.com": "https://www.gulahmedshop.com/catalogsearch/result/?q={query}",
+    "jdotpk.com": "https://www.junaidjamshed.com/catalogsearch/result/?q={query}",
+    "nishatlinen.com": "https://nishatlinen.com/search?q={query}",
+    "alkaramstudio.com": "https://www.alkaramstudio.com/search?q={query}",
+    "generation.com.pk": "https://generation.com.pk/search?q={query}",
+    "ethnic.pk": "https://ethnic.pk/search?q={query}",
+    "bonanzasatrangi.com": "https://bonanzasatrangi.com/search?q={query}",
+    "mariab.pk": "https://www.mariab.pk/catalogsearch/result/?q={query}",
+}
 
 @app.on_event("startup")
 async def startup():
-    global STORES, PRODUCTS
+    global PRODUCTS
     db.init_db()
     PRODUCTS = db.load_all_products()
-
-    stores_path = Path(__file__).parent / "data" / "stores.json"
-    if stores_path.exists():
-        STORES = json.loads(stores_path.read_text())
-
     print(f"[startup] {len(PRODUCTS)} products | {len(STORES)} stores loaded")
 
 
@@ -100,6 +118,76 @@ def _area_match(store_domain: str, area: Optional[str]) -> bool:
     return True   # unknown store — include
 
 
+def _extract_store_image(html_text: str) -> Optional[str]:
+    candidates = re.findall(
+        r'(?:https?:)?//[^"\'\s<>]+\.(?:jpg|jpeg|png|webp)(?:\?[^"\'\s<>]*)?',
+        html_text,
+        flags=re.IGNORECASE,
+    )
+    for candidate in candidates:
+        image = html.unescape(candidate.replace("\\/", "/").strip())
+        if image.startswith("//"):
+            image = f"https:{image}"
+        if image.startswith("http") and not any(
+            word in image.lower()
+            for word in (
+                "logo", "icon", "placeholder", "unsplash", "700x105",
+                "popup_bnpl", "live-chat", "menu-images", "payment",
+                "footer", "trust-badge", "menu", "new-in", "banner",
+                "collection", "lookbook", "thumbnail", "winter-prints",
+            )
+        ):
+            return image
+    return None
+
+
+def _live_store_image(store: str, query: str) -> Optional[str]:
+    template = STORE_SEARCH_URLS.get(store)
+    if not template:
+        return None
+    try:
+        response = httpx.get(
+            template.format(query=quote_plus(query)),
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 Chrome/120 Safari/537.36"
+                )
+            },
+            follow_redirects=True,
+            timeout=5,
+        )
+        if response.status_code != 200:
+            return None
+        return _extract_store_image(response.text)
+    except httpx.HTTPError as error:
+        print(f"[images] {store} unavailable: {error}")
+        return None
+
+
+def _live_store_images(stores: set[str], query_attrs: dict) -> dict[str, Optional[str]]:
+    global STORE_IMAGE_CACHE_QUERY
+    query = " ".join(
+        value for value in (
+            query_attrs.get("color"),
+            query_attrs.get("silhouette"),
+            query_attrs.get("length"),
+            "dress",
+        )
+        if value and value != "unknown"
+    )
+    if STORE_IMAGE_CACHE_QUERY != query:
+        STORE_IMAGE_CACHE.clear()
+        STORE_IMAGE_CACHE_QUERY = query
+
+    missing = [store for store in stores if store not in STORE_IMAGE_CACHE]
+    if missing:
+        with ThreadPoolExecutor(max_workers=6) as executor:
+            fetched = executor.map(lambda store: (store, _live_store_image(store, query)), missing)
+            STORE_IMAGE_CACHE.update(fetched)
+    return {store: STORE_IMAGE_CACHE.get(store) for store in stores}
+
+
 def _search_products(
     query_attrs: dict,
     budget_min: Optional[float],
@@ -134,9 +222,10 @@ def _search_products(
 
             results.append(ProductResult(
                 id=p["id"], title=p["title"], store=p["store"],
+                color=p.get("color", "unknown"),
                 price=price, currency=p.get("currency", "PKR"),
                 image=p.get("image"), url=p["url"],
-                score=sc, label=lbl,
+                score=round(sc * 100, 1), label=lbl,
                 matched=matched,
                 differs=[DifferEntry(**d) for d in differs],
                 explanation=expl,
@@ -165,7 +254,11 @@ def _search_products(
         results = _run(budget_min, budget_max, drop_attrs=["occasion", "color"])
         relaxed_reasons.append("dropped: color")
 
-    return results[:20], relaxed_reasons
+    results = results[:20]
+    live_images = _live_store_images({result.store for result in results}, query_attrs)
+    for result in results:
+        result.image = live_images.get(result.store)
+    return results, relaxed_reasons
 
 
 # ── Routes ────────────────────────────────────────────────────────────────────
@@ -234,10 +327,114 @@ async def search(req: SearchRequest):
 async def list_stores():
     return STORES
 
+@app.get("/live-search")
+async def live_regional_search(
+    q: Optional[str] = "maxi dress",
+    color: Optional[str] = "",
+    silhouette: Optional[str] = ""
+):
+    """
+    Constructs direct live search query URLs for all verified Pakistani apparel stores
+    available in Islamabad & Rawalpindi.
+    """
+    search_term = " ".join(filter(None, [color, silhouette, q])).strip()
+    results = []
+    for s in STORES:
+        query_url = f"{s.get('search_url', s.get('website') + '/search?q=')}{search_term.replace(' ', '+')}"
+        results.append({
+            "store": s["store"],
+            "name": s["name"],
+            "website": s.get("website", ""),
+            "live_search_url": query_url,
+            "branches": s.get("branches", [])
+        })
+    return {
+        "search_term": search_term,
+        "stores_count": len(results),
+        "stores": results
+    }
 
 @app.get("/products/count")
 async def products_count():
     return {"count": len(PRODUCTS)}
+
+
+@app.get("/graph")
+async def catalog_graph(
+    store: Optional[str] = None,
+    attribute: Optional[str] = None,
+):
+    """Return the product relationship graph derived from the catalog rows."""
+    attribute_keys = ("silhouette", "neckline", "sleeve", "length", "color", "occasion")
+    if attribute and attribute not in attribute_keys:
+        raise HTTPException(400, f"Unsupported attribute: {attribute}")
+
+    products = [p for p in PRODUCTS if not store or p["store"] == store]
+    nodes: dict[str, dict] = {}
+    edges: list[dict] = []
+    edge_keys: set[tuple[str, str, str]] = set()
+
+    def add_node(node_id: str, node_type: str, label: str, **data):
+        nodes.setdefault(node_id, {
+            "id": node_id,
+            "type": node_type,
+            "label": label,
+            **data,
+        })
+
+    def add_edge(source: str, target: str, relation: str):
+        key = (source, target, relation)
+        if key not in edge_keys:
+            edge_keys.add(key)
+            edges.append({"source": source, "target": target, "relation": relation})
+
+    for product in products:
+        product_id = f"product:{product['id']}"
+        add_node(
+            product_id,
+            "product",
+            product["title"],
+            product_id=product["id"],
+            store=product["store"],
+            store_name=product.get("store_name", product["store"]),
+            price=product.get("price", 0),
+            currency=product.get("currency", "PKR"),
+            url=product["url"],
+            image=product.get("image"),
+        )
+
+        store_id = f"store:{product['store']}"
+        add_node(
+            store_id,
+            "store",
+            product.get("store_name", product["store"]),
+            domain=product["store"],
+        )
+        add_edge(product_id, store_id, "sold by")
+
+        area = str(product.get("area") or "").strip()
+        if area:
+            area_id = f"area:{area.lower()}"
+            add_node(area_id, "area", area)
+            add_edge(product_id, area_id, "available in")
+
+        for key in attribute_keys:
+            if attribute and key != attribute:
+                continue
+            value = str(product.get(key) or "unknown").strip()
+            if not value or value == "unknown":
+                continue
+            value_id = f"attribute:{key}:{value.lower()}"
+            add_node(value_id, "attribute", value, attribute=key)
+            add_edge(product_id, value_id, f"has {key}")
+
+    return {
+        "nodes": list(nodes.values()),
+        "edges": edges,
+        "product_count": len(products),
+        "node_count": len(nodes),
+        "edge_count": len(edges),
+    }
 
 
 # ── Dev runner ────────────────────────────────────────────────────────────────

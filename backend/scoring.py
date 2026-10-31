@@ -35,14 +35,14 @@ def _load_conflicts():
 SIM_TABLE  = _load_sim()
 CONFLICTS  = _load_conflicts()
 
-# ── Weights per attribute ─────────────────────────────────────────────────────
+# ── Weights per attribute (Color & Silhouette prioritized for visual accuracy) ──
 WEIGHTS = {
+    "color":      0.30,
     "silhouette": 0.25,
-    "neckline":   0.20,
-    "sleeve":     0.15,
-    "length":     0.20,
-    "color":      0.12,
-    "occasion":   0.08,
+    "length":     0.18,
+    "neckline":   0.12,
+    "sleeve":     0.10,
+    "occasion":   0.05,
 }
 
 LABEL_THRESHOLDS = [

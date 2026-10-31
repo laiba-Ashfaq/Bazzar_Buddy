@@ -47,6 +47,7 @@ class ProductResult(BaseModel):
     id: int
     title: str
     store: str
+    color: str = "unknown"
     price: float
     currency: str = "PKR"
     image: Optional[str]

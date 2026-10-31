@@ -1,63 +1,153 @@
 [
   {
-    "store": "khaadi.com",
-    "name": "Khaadi",
+    "store": "sapphireonline.pk",
+    "name": "Sapphire",
+    "website": "https://pk.sapphireonline.pk",
+    "search_url": "https://pk.sapphireonline.pk/search?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "Centaurus Mall, F-8"},
-      {"area": "Islamabad", "label": "F-7 Markaz"},
-      {"area": "Rawalpindi", "label": "Saddar"},
-      {"area": "Rawalpindi", "label": "Bahria Town Phase 7"}
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "Beverly Centre, Blue Area Islamabad"},
+      {"area": "Islamabad", "label": "Giga Mall, DHA Phase 2 Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar Cantt, Rawalpindi"},
+      {"area": "Rawalpindi", "label": "Bahria Town Phase 7, Rawalpindi"}
+    ]
+  },
+  {
+    "store": "khaadi.com",
+    "name": "Khaadi",
+    "website": "https://khaadi.com",
+    "search_url": "https://khaadi.com/search?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "F-7 Markaz (Jinnah Super), Islamabad"},
+      {"area": "Islamabad", "label": "Giga Mall, DHA Phase 2 Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar, Rawalpindi"},
+      {"area": "Rawalpindi", "label": "Bahria Town Phase 7, Rawalpindi"}
+    ]
+  },
+  {
+    "store": "limelight.pk",
+    "name": "Limelight",
+    "website": "https://www.limelight.pk",
+    "search_url": "https://www.limelight.pk/search?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "F-10 Markaz, Islamabad"},
+      {"area": "Islamabad", "label": "Giga Mall, Islamabad"},
+      {"area": "Rawalpindi", "label": "Commercial Market, Satellite Town Rawalpindi"},
+      {"area": "Rawalpindi", "label": "Saddar, Rawalpindi"}
     ]
   },
   {
     "store": "sanasafinaz.com",
     "name": "Sana Safinaz",
+    "website": "https://www.sanasafinaz.com",
+    "search_url": "https://www.sanasafinaz.com/pk/catalogsearch/result/?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "Centaurus Mall, F-8"},
-      {"area": "Islamabad", "label": "Blue Area"},
-      {"area": "Rawalpindi", "label": "Gulrez Housing Scheme"}
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "Beverly Centre, Blue Area Islamabad"},
+      {"area": "Rawalpindi", "label": "Gulrez Housing Scheme, Rawalpindi"}
     ]
   },
   {
     "store": "gulahmed.com",
     "name": "Gul Ahmed",
+    "website": "https://www.gulahmedshop.com",
+    "search_url": "https://www.gulahmedshop.com/catalogsearch/result/?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "G-9 Markaz"},
-      {"area": "Islamabad", "label": "F-10 Markaz"},
-      {"area": "Rawalpindi", "label": "Chandni Chowk"},
-      {"area": "Rawalpindi", "label": "Raja Bazaar"}
+      {"area": "Islamabad", "label": "G-9 Markaz (Karachi Company), Islamabad"},
+      {"area": "Islamabad", "label": "F-10 Markaz, Islamabad"},
+      {"area": "Rawalpindi", "label": "Chandni Chowk, Murree Road Rawalpindi"},
+      {"area": "Rawalpindi", "label": "Raja Bazaar, Rawalpindi"}
     ]
   },
   {
     "store": "jdotpk.com",
     "name": "J. (Junaid Jamshed)",
+    "website": "https://www.junaidjamshed.com",
+    "search_url": "https://www.junaidjamshed.com/catalogsearch/result/?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "Centaurus Mall"},
-      {"area": "Islamabad", "label": "Giga Mall, DHA Phase 2"},
-      {"area": "Rawalpindi", "label": "Saddar"}
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "F-6 Supermarket, Islamabad"},
+      {"area": "Islamabad", "label": "Giga Mall, DHA Phase 2 Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar, Rawalpindi"}
     ]
   },
   {
-    "store": "zara-pk.online",
-    "name": "Zara Pakistan",
+    "store": "nishatlinen.com",
+    "name": "Nishat Linen",
+    "website": "https://nishatlinen.com",
+    "search_url": "https://nishatlinen.com/search?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "Online Only (Delivers Twin Cities)"}
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "F-7 Markaz, Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar, Rawalpindi"}
+    ]
+  },
+  {
+    "store": "alkaramstudio.com",
+    "name": "Alkaram Studio",
+    "website": "https://www.alkaramstudio.com",
+    "search_url": "https://www.alkaramstudio.com/search?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "G-9 Markaz, Islamabad"},
+      {"area": "Rawalpindi", "label": "Commercial Market, Rawalpindi"}
+    ]
+  },
+  {
+    "store": "generation.com.pk",
+    "name": "Generation",
+    "website": "https://generation.com.pk",
+    "search_url": "https://generation.com.pk/search?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "F-7 Jinnah Super, Islamabad"},
+      {"area": "Islamabad", "label": "Giga Mall, Islamabad"}
+    ]
+  },
+  {
+    "store": "ethnic.pk",
+    "name": "Ethnic (Outfitters)",
+    "website": "https://ethnic.pk",
+    "search_url": "https://ethnic.pk/search?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Islamabad", "label": "F-7 Markaz, Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar, Rawalpindi"}
     ]
   },
   {
     "store": "bonanzasatrangi.com",
     "name": "Bonanza Satrangi",
+    "website": "https://bonanzasatrangi.com",
+    "search_url": "https://bonanzasatrangi.com/search?q=",
     "delivers_online": true,
     "branches": [
-      {"area": "Islamabad", "label": "F-6 Supermarket"},
-      {"area": "Islamabad", "label": "Jinnah Super, F-7"},
-      {"area": "Rawalpindi", "label": "Bahria Town Phase 4"},
-      {"area": "Rawalpindi", "label": "Peshawar Road"}
+      {"area": "Islamabad", "label": "F-6 Supermarket, Islamabad"},
+      {"area": "Islamabad", "label": "Jinnah Super, F-7 Islamabad"},
+      {"area": "Rawalpindi", "label": "Bahria Town Phase 4, Rawalpindi"}
+    ]
+  },
+  {
+    "store": "mariab.pk",
+    "name": "Maria.B",
+    "website": "https://www.mariab.pk",
+    "search_url": "https://www.mariab.pk/catalogsearch/result/?q=",
+    "delivers_online": true,
+    "branches": [
+      {"area": "Islamabad", "label": "F-7 Markaz, Islamabad"},
+      {"area": "Islamabad", "label": "Centaurus Mall, F-8 Islamabad"},
+      {"area": "Rawalpindi", "label": "Saddar Cantt, Rawalpindi"}
     ]
   }
 ]

@@ -1,4 +1,4 @@
-# BAZAAR BUDDY— Autonomous Fashion Search Engine
+# BazzarBuddy — Autonomous Fashion Search Engine
 
 A sketch-to-shop visual search engine for apparel stores across the Twin Cities (Islamabad & Rawalpindi).
 
@@ -9,7 +9,7 @@ A sketch-to-shop visual search engine for apparel stores across the Twin Cities 
 | Service | Why Needed | How to Get (Free) |
 |---|---|---|
 | **Google Gemini API** (Primary Vision Agent) | Analyzes uploaded sketches/photos and extracts 6 attributes (`silhouette`, `neckline`, `sleeve`, `length`, `color`, `occasion`). | 1. Visit [aistudio.google.com](https://aistudio.google.com/app/apikey)<br>2. Click **"Get API key"** (Free tier)<br>3. Copy key into `.env` |
-| **Ollama / Gemma 3** (Optional Local Fallback) | Run 100% offline vision model with zero rate-limits. | 1. Download [ollama.com](https://ollama.com)<br>2. Run in terminal: `ollama run llava:7b` |
+| **Ollama / LLaVA** (Optional Local Fallback) | Run image extraction locally without an API key. | 1. Download [ollama.com](https://ollama.com)<br>2. Run `ollama pull llava:7b` |
 
 *Note: The frontend also includes a standalone instant inference engine, so you can test and present the full MVP even without an active internet connection or API key.*
 
@@ -19,7 +19,7 @@ A sketch-to-shop visual search engine for apparel stores across the Twin Cities 
 
 ```
 Ai Stylist/
-├── index.html                 # Vyzor-styled responsive Frontend (Sky Blue & Lime theme)
+├── index.html                 # BazzarBuddy responsive frontend
 ├── .env.example               # Template for API keys
 ├── backend/
 │   ├── main.py                # FastAPI endpoints (/health, /extract, /search)
@@ -61,9 +61,17 @@ Simply double-click `index.html` in your file explorer or open it in Chrome / Ed
 
 2. Open `.env` and paste your Gemini key:
    ```env
-   GEMINI_API_KEY=AIzaSy...your_real_key_here
+   GEMINI_API_KEY=your_gemini_api_key_here
    GEMINI_MODEL=gemini-1.5-flash
    ```
+
+   Ollama is optional. The installed `gemma3:1b` model is text-only and cannot analyze uploaded images. For local image extraction, install the vision model:
+
+   ```bash
+   ollama pull llava:7b
+   ```
+
+   If you do not install LLaVA and do not configure Gemini, the backend uses its explicit mock fallback and labels the result as `MOCK`.
 
 3. Run the FastAPI Backend:
    ```bash
