@@ -1,0 +1,5 @@
+# Optional local-only dependencies for building and querying the CLIP index.
+# Keep these out of serverless production requirements: PyTorch is too large
+# for common Lambda function bundle limits.
+-r requirements.txt
+sentence-transformers>=3.0.0

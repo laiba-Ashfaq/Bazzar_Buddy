@@ -81,6 +81,14 @@ Simply double-click `index.html` in your file explorer or open it in Chrome / Ed
    - Auto-generated Swagger API docs will be live at: **`http://localhost:8000/docs`**
    - Health check: **`http://localhost:8000/health`**
 
+   For serverless deployment, use `backend/requirements.txt`. It intentionally
+   excludes the optional CLIP/PyTorch stack so the function stays below Lambda
+   bundle limits. To build the local visual index, install the separate file:
+
+   ```bash
+   pip install -r backend/requirements-visual.txt
+   ```
+
 ---
 
 ### Step 3: Run the Real Store Scraper

@@ -11,7 +11,11 @@ from typing import Any
 import httpx
 import numpy as np
 from PIL import Image, UnidentifiedImageError
-from sentence_transformers import SentenceTransformer
+
+try:
+    from sentence_transformers import SentenceTransformer
+except ImportError:
+    SentenceTransformer = None  # type: ignore[assignment,misc]
 
 DB_PATH = Path(__file__).parent / "data" / "products.db"
 INDEX_PATH = Path(__file__).parent / "data" / "embeddings.npz"
@@ -20,11 +24,16 @@ MAX_IMAGE_SIZE = 512
 DOWNLOAD_TIMEOUT = 20.0
 
 logger = logging.getLogger(__name__)
-_MODEL: SentenceTransformer | None = None
+_MODEL = None
 
 
-def _model() -> SentenceTransformer:
+def _model():
     global _MODEL
+    if SentenceTransformer is None:
+        raise RuntimeError(
+            "CLIP support is optional. Install backend/requirements-visual.txt "
+            "before building or querying the visual index."
+        )
     if _MODEL is None:
         _MODEL = SentenceTransformer(MODEL_NAME, device="cpu")
     return _MODEL
