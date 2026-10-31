@@ -1,4 +1,4 @@
-# VYZOR STYLER — Autonomous Fashion Search Engine
+# BAZAAR BUDDY— Autonomous Fashion Search Engine
 
 A sketch-to-shop visual search engine for apparel stores across the Twin Cities (Islamabad & Rawalpindi).
 
